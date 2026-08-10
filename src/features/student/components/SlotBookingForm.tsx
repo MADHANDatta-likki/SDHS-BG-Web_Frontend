@@ -1,5 +1,10 @@
 import { useMemo, useState } from "react";
 
+import {
+  formatChapterLabel,
+  isSupplementalChapter,
+} from "../../../utils/chapterLabel";
+import { generateSlokaOptions } from "../../../utils/slokaOptions";
 import type {
   BookStudentSlotRequest,
   StudentChapter,
@@ -31,6 +36,13 @@ function ChapterFields({
   onCountChange,
 }: ChapterFieldsProps) {
   const chapter = chapters.find((item) => item.id === Number(chapterId));
+  const slokaOptions = generateSlokaOptions(chapter?.totalSlokas ?? 0);
+
+  const handleChapterChange = (value: string) => {
+    onChapterChange(value);
+    onCountChange("");
+  };
+
   return (
     <div className="student-form__chapter">
       <div className="student-field">
@@ -38,13 +50,13 @@ function ChapterFields({
         <select
           id={`chapter${idSuffix}`}
           value={chapterId}
-          onChange={(event) => onChapterChange(event.target.value)}
+          onChange={(event) => handleChapterChange(event.target.value)}
           required
         >
           <option value="">Select a chapter</option>
           {chapters.map((item) => (
             <option key={item.id} value={item.id}>
-              Ch {item.chapterNumber} - {item.chapterName}
+              {formatChapterLabel(item.chapterNumber, item.chapterName, "Ch")}
             </option>
           ))}
         </select>
@@ -53,16 +65,20 @@ function ChapterFields({
         <label htmlFor={`slokaCount${idSuffix}`}>
           Number of Slokas{idSuffix ? " (Chapter 2)" : ""}
         </label>
-        <input
+        <select
           id={`slokaCount${idSuffix}`}
-          inputMode="numeric"
-          min="1"
-          pattern="[0-9]+"
-          type="number"
           value={count}
           onChange={(event) => onCountChange(event.target.value)}
+          disabled={chapter === undefined}
           required
-        />
+        >
+          <option value="">Select number of slokas</option>
+          {slokaOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
         {chapter && (
           <small>
             {chapter.allowedSlokas
@@ -95,9 +111,17 @@ function SlotBookingForm({ chapters, slots, submitting, onSubmit }: SlotBookingF
     if (!chapter || !Number.isInteger(count) || count <= 0) return "Please enter a valid sloka count.";
     if (chapter.allowedSlokas) {
       const allowed = chapter.allowedSlokas.split(",").map((item) => Number(item.trim()));
-      if (!allowed.includes(count)) return `Allowed sloka counts for Chapter ${chapter.chapterNumber}: ${chapter.allowedSlokas}.`;
+      if (!allowed.includes(count)) {
+        const reference = isSupplementalChapter(chapter.chapterName)
+          ? chapter.chapterName
+          : `Chapter ${chapter.chapterNumber}`;
+        return `Allowed sloka counts for ${reference}: ${chapter.allowedSlokas}.`;
+      }
     } else if (count > chapter.totalSlokas) {
-      return `Sloka count cannot exceed ${chapter.totalSlokas} for Chapter ${chapter.chapterNumber}.`;
+      const reference = isSupplementalChapter(chapter.chapterName)
+        ? chapter.chapterName
+        : `Chapter ${chapter.chapterNumber}`;
+      return `Sloka count cannot exceed ${chapter.totalSlokas} for ${reference}.`;
     }
     return null;
   };
@@ -127,66 +151,75 @@ function SlotBookingForm({ chapters, slots, submitting, onSubmit }: SlotBookingF
   return (
     <form className="student-form" onSubmit={submit} noValidate>
       {validationError && <div className="student-alert student-alert--error" role="alert">{validationError}</div>}
-      <fieldset className="student-slot-grid">
-        <legend>Select Time Slot</legend>
-        {slots.map((slot) => {
-          const unavailable = slot.availableCount <= 0;
-          return (
-            <label
-              key={slot.id}
-              className={`student-slot${slot.id === selectedSlot?.id ? " student-slot--selected" : ""}${unavailable ? " student-slot--disabled" : ""}`}
-            >
-              <input
-                type="radio"
-                name="slot"
-                value={slot.id}
-                checked={slotId === String(slot.id)}
-                disabled={unavailable}
-                onChange={(event) => setSlotId(event.target.value)}
-              />
-              <strong>{slot.name}</strong>
-              <span>{slot.duration}</span>
-              <small>{unavailable ? "Full" : `${slot.availableCount} available`}</small>
-            </label>
-          );
-        })}
-      </fieldset>
-      <ChapterFields
-        chapters={chapters}
-        chapterId={chapterId}
-        count={slokaCount}
-        idSuffix=""
-        onChapterChange={setChapterId}
-        onCountChange={setSlokaCount}
-      />
-      <label className="student-checkbox">
-        <input
-          type="checkbox"
-          checked={secondChapter}
-          onChange={(event) => {
-            setSecondChapter(event.target.checked);
-            if (!event.target.checked) {
-              setChapterId2("");
-              setSlokaCount2("");
-            }
-          }}
-        />
-        Add second chapter
-      </label>
-      {secondChapter && (
+      <section className="student-booking-step" aria-labelledby="booking-syllabus-step">
+        <div className="student-booking-step__heading"><span aria-hidden="true">1</span><div><h3 id="booking-syllabus-step">Select Chapter</h3><p>Choose the syllabus you are ready to present.</p></div></div>
         <ChapterFields
           chapters={chapters}
-          chapterId={chapterId2}
-          count={slokaCount2}
-          idSuffix="2"
-          onChapterChange={setChapterId2}
-          onCountChange={setSlokaCount2}
+          chapterId={chapterId}
+          count={slokaCount}
+          idSuffix=""
+          onChapterChange={setChapterId}
+          onCountChange={setSlokaCount}
         />
-      )}
-      <button className="student-button student-button--primary" type="submit" disabled={submitting}>
-        {submitting && <span className="student-spinner student-spinner--small" aria-hidden="true" />}
-        {submitting ? "Booking..." : "Book Slot"}
-      </button>
+        <label className="student-checkbox">
+          <input
+            type="checkbox"
+            checked={secondChapter}
+            onChange={(event) => {
+              setSecondChapter(event.target.checked);
+              if (!event.target.checked) {
+                setChapterId2("");
+                setSlokaCount2("");
+              }
+            }}
+          />
+          Add second chapter
+        </label>
+        {secondChapter && (
+          <ChapterFields
+            chapters={chapters}
+            chapterId={chapterId2}
+            count={slokaCount2}
+            idSuffix="2"
+            onChapterChange={setChapterId2}
+            onCountChange={setSlokaCount2}
+          />
+        )}
+      </section>
+      <section className="student-booking-step" aria-labelledby="booking-slot-step">
+        <div className="student-booking-step__heading"><span aria-hidden="true">2</span><div><h3 id="booking-slot-step">Select Time Slot</h3><p>Choose one available examination window.</p></div></div>
+        <fieldset className="student-slot-grid">
+          <legend className="sr-only">Available examination time slots</legend>
+          {slots.map((slot) => {
+            const unavailable = slot.availableCount <= 0;
+            return (
+              <label
+                key={slot.id}
+                className={`student-slot${slot.id === selectedSlot?.id ? " student-slot--selected" : ""}${unavailable ? " student-slot--disabled" : ""}`}
+              >
+                <input
+                  type="radio"
+                  name="slot"
+                  value={slot.id}
+                  checked={slotId === String(slot.id)}
+                  disabled={unavailable}
+                  onChange={(event) => setSlotId(event.target.value)}
+                />
+                <strong>{slot.name}</strong>
+                <span>{slot.duration}</span>
+                <small>{unavailable ? "Full" : `${slot.availableCount} available`}</small>
+              </label>
+            );
+          })}
+        </fieldset>
+      </section>
+      <div className="student-booking-confirmation">
+        <div><strong>Confirm Booking</strong><span>{selectedSlot ? selectedSlot.name : "Select a time slot to continue"}</span></div>
+        <button className="student-button student-button--primary" type="submit" disabled={submitting}>
+          {submitting && <span className="student-spinner student-spinner--small" aria-hidden="true" />}
+          {submitting ? "Booking..." : "Confirm Booking"}
+        </button>
+      </div>
     </form>
   );
 }

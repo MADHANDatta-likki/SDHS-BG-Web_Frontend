@@ -6,16 +6,25 @@ import Header from "../components/layout/Header";
 import Sidebar from "../components/layout/Sidebar";
 import { getNavigationItems } from "../config/navigation";
 import { useAuth } from "../features/auth/hooks/useAuth";
+import { useOptionalEnrollment } from "../hooks/useEnrollment";
 import "../theme/layout.css";
 
 function AuthenticatedLayout() {
   const { currentUser, logout } = useAuth();
+  const enrollmentContext = useOptionalEnrollment();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const navigationItems = useMemo(
-    () => getNavigationItems(currentUser?.role ?? "STUDENT"),
-    [currentUser?.role],
+    () => {
+      const items = getNavigationItems(currentUser?.role ?? "STUDENT");
+      const enrollment = enrollmentContext?.selectedEnrollment;
+      const program = enrollment?.programType ?? enrollment?.batchType;
+      return currentUser?.role === "STUDENT" && program === "FLUENT"
+        ? items.filter((item) => item.path !== "/student/slots" && item.path !== "/student/grades")
+        : items;
+    },
+    [currentUser?.role, enrollmentContext?.selectedEnrollment],
   );
 
   useEffect(() => {

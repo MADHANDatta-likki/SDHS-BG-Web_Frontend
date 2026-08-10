@@ -5,6 +5,7 @@ export const API_ENDPOINTS = {
   },
   STUDENT: {
     HOME: "/api/v1/student/home",
+    ENROLLMENTS: "/api/v1/student/enrollments",
     SLOTS: "/api/v1/student/slots",
     BOOK: "/api/v1/student/book",
     CANCEL: "/api/v1/student/cancel",
@@ -13,12 +14,14 @@ export const API_ENDPOINTS = {
   },
   TEACHER: {
     HOME: "/api/v1/teacher/home",
+    MY_AVAILABILITY: "/api/v1/teacher/my-availability",
     DASHBOARD: "/api/v1/teacher/dashboard",
     GRADE: "/api/v1/teacher/grade",
     ATTENDANCE: "/api/v1/teacher/attendance",
   },
   ADMIN: {
     VOLUNTEERS: "/api/v1/admin/volunteers",
+    VOLUNTEERS_EXPORT: "/api/v1/admin/volunteers/export",
     VOLUNTEER_EDIT: (volunteerId: string) =>
       `/api/v1/admin/volunteers/${encodeURIComponent(volunteerId)}/edit`,
     VOLUNTEER_DROP: (volunteerId: string) =>
@@ -32,6 +35,12 @@ export const API_ENDPOINTS = {
       `/api/v1/admin/enrollments/${id}/approve`,
     ENROLLMENT_REJECT: (id: number) =>
       `/api/v1/admin/enrollments/${id}/reject`,
+    ENROLLMENT_COMPLETE: (id: number) =>
+      `/api/v1/admin/enrollments/${id}/complete`,
+    ENROLLMENT_DROP: (id: number) =>
+      `/api/v1/admin/enrollments/${id}/drop`,
+    ENROLLMENT_DEFAULT: (id: number) =>
+      `/api/v1/admin/enrollments/${id}/default`,
     SYLLABUS: "/api/v1/admin/syllabus",
     SYLLABUS_SAVE: "/api/v1/admin/syllabus/save",
     TEACHER_AVAILABILITY: "/api/v1/admin/teacher-availability",

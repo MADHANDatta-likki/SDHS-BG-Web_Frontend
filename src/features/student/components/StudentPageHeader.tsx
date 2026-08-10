@@ -1,3 +1,5 @@
+import RolePageHeader from "../../../components/common/RolePageHeader";
+
 interface StudentPageHeaderProps {
   title: string;
   description?: string;
@@ -5,15 +7,7 @@ interface StudentPageHeaderProps {
 }
 
 function StudentPageHeader({ title, description, action }: StudentPageHeaderProps) {
-  return (
-    <header className="student-page-header">
-      <div>
-        <h1>{title}</h1>
-        {description && <p>{description}</p>}
-      </div>
-      {action}
-    </header>
-  );
+  return <RolePageHeader title={title} description={description} action={action} className="student-page-header" />;
 }
 
 export default StudentPageHeader;

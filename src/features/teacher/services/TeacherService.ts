@@ -3,8 +3,11 @@ import { API_ENDPOINTS } from "../../../constants/ApiEndpoints";
 import type {
   SaveTeacherAttendanceRequest,
   SaveTeacherAttendanceResponse,
+  SaveTeacherAvailabilityRequest,
+  SaveTeacherAvailabilityResponse,
   TeacherAttendanceQuery,
   TeacherAttendanceResponse,
+  TeacherAvailabilityResponse,
   TeacherDashboardResponse,
   TeacherHomeResponse,
   UpdateGradeRequest,
@@ -15,6 +18,23 @@ class TeacherService {
   async getHome(): Promise<TeacherHomeResponse> {
     const response = await axiosInstance.get<TeacherHomeResponse>(
       API_ENDPOINTS.TEACHER.HOME,
+    );
+    return response.data;
+  }
+
+  async getMyAvailability(): Promise<TeacherAvailabilityResponse> {
+    const response = await axiosInstance.get<TeacherAvailabilityResponse>(
+      API_ENDPOINTS.TEACHER.MY_AVAILABILITY,
+    );
+    return response.data;
+  }
+
+  async saveMyAvailability(
+    request: SaveTeacherAvailabilityRequest,
+  ): Promise<SaveTeacherAvailabilityResponse> {
+    const response = await axiosInstance.post<SaveTeacherAvailabilityResponse>(
+      API_ENDPOINTS.TEACHER.MY_AVAILABILITY,
+      request,
     );
     return response.data;
   }

@@ -1,2 +1,13 @@
 export { default as adminService } from "./services/AdminService";
+export { default as AdminDashboardPage } from "./pages/AdminDashboardPage";
+export { default as AdminSyllabusPage } from "./pages/AdminSyllabusPage";
+export { default as AdminTeacherAvailabilityPage } from "./pages/AdminTeacherAvailabilityPage";
+export { default as AdminBulkBookingPage } from "./pages/AdminBulkBookingPage";
+export { default as AdminTeachersDashboardPage } from "./pages/AdminTeachersDashboardPage";
+export { default as AdminEnrollmentsPage } from "./pages/AdminEnrollmentsPage";
+export { default as AdminVolunteersPage } from "./pages/AdminVolunteersPage";
+export { default as AdminVolunteerAnalyticsPage } from "./pages/AdminVolunteerAnalyticsPage";
+export { default as AdminAttendanceConfigPage } from "./pages/AdminAttendanceConfigPage";
+export { default as AdminReportsPage } from "./pages/AdminReportsPage";
+export { default as AdminGroupDetailPage } from "./pages/AdminGroupDetailPage";
 export type * from "./types/api";

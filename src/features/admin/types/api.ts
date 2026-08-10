@@ -1,4 +1,5 @@
 import type { ApiMessageResponse } from "../../../types/api";
+import type { LearningEnrollment, ProgramType } from "../../../types/Enrollment";
 
 export interface VolunteerQuery {
   q?: string;
@@ -26,6 +27,11 @@ export interface AdminVolunteer {
 export interface VolunteerListResponse {
   volunteers: AdminVolunteer[];
   total: number;
+}
+
+export interface VolunteerCsvDownload {
+  content: Blob;
+  filename: string;
 }
 
 export interface EditVolunteerRequest {
@@ -81,27 +87,40 @@ export interface VolunteerAnalyticsResponse {
 }
 
 export interface Enrollment {
-  id: number;
-  name: string;
+  enrollmentId: number;
   volunteerId: string;
-  whatsappPhone: string;
-  emailId: string | null;
-  trackType: string;
-  sessionSlot: string;
-  hasPastMem: boolean | null;
-  pastChaptersCsv: string | null;
-  status: string;
-  createdAt: string | null;
+  volunteerName: string;
+  programType: ProgramType;
+  requestedDate: string;
+  currentActivePrograms: ProgramType[];
+  currentPendingPrograms: ProgramType[];
+  defaultEnrollment: boolean;
 }
 
 export interface EnrollmentListResponse {
   enrollments: Enrollment[];
   total: number;
+  activeEnrollments: ActiveEnrollment[];
+}
+
+export interface ActiveEnrollment {
+  enrollmentId: number;
+  volunteerId: string;
+  volunteerName: string;
+  programType: ProgramType;
+  groupId: string | null;
+  slotEligible: boolean;
+  defaultEnrollment: boolean;
 }
 
 export interface ApproveEnrollmentRequest {
   groupId: string;
+  slotEligible: boolean;
 }
+
+export interface RejectEnrollmentRequest { reason?: string; }
+
+export type EnrollmentActionResponse = LearningEnrollment;
 
 export interface SyllabusQuery {
   date?: string;
@@ -147,11 +166,20 @@ export interface SlotOption {
 export interface TeacherAvailability {
   volunteerId: string;
   name: string;
+  status: "SUBMITTED" | "PENDING";
   selectedSlotIds: number[];
+}
+
+export interface TeacherAvailabilitySummary {
+  teachers: number;
+  submitted: number;
+  pending: number;
+  availabilityWindows: number;
 }
 
 export interface TeacherAvailabilityResponse {
   date: string;
+  summary: TeacherAvailabilitySummary;
   teachers: TeacherAvailability[];
   slots: SlotOption[];
 }

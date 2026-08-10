@@ -5,6 +5,7 @@ import type {
   AllowedSlokasQuery,
   AllowedSlokasResponse,
   ApproveEnrollmentRequest,
+  EnrollmentActionResponse,
   AttendanceConfigResponse,
   BookingIdRequest,
   BulkBookingResponse,
@@ -12,6 +13,7 @@ import type {
   DropVolunteerRequest,
   EditVolunteerRequest,
   EnrollmentListResponse,
+  RejectEnrollmentRequest,
   SaveAttendanceConfigRequest,
   SaveBulkBookingRequest,
   SaveBulkBookingResponse,
@@ -26,6 +28,7 @@ import type {
   TeachersDashboardResponse,
   VolunteerAnalyticsResponse,
   VolunteerListResponse,
+  VolunteerCsvDownload,
   VolunteerQuery,
 } from "../types/api";
 
@@ -38,6 +41,19 @@ class AdminService {
       { params: query },
     );
     return response.data;
+  }
+
+  async exportVolunteers(
+    query: VolunteerQuery = {},
+  ): Promise<VolunteerCsvDownload> {
+    const response = await axiosInstance.get<Blob>(
+      API_ENDPOINTS.ADMIN.VOLUNTEERS_EXPORT,
+      { params: query, responseType: "blob" },
+    );
+    const disposition = response.headers["content-disposition"] as string | undefined;
+    const filename = disposition?.match(/filename="?([^";]+)"?/i)?.[1]
+      ?? "volunteers.csv";
+    return { content: response.data, filename };
   }
 
   async editVolunteer(
@@ -90,17 +106,42 @@ class AdminService {
   async approveEnrollment(
     id: number,
     request: ApproveEnrollmentRequest,
-  ): Promise<AdminMessageResponse> {
-    const response = await axiosInstance.post<AdminMessageResponse>(
+  ): Promise<EnrollmentActionResponse> {
+    const response = await axiosInstance.post<EnrollmentActionResponse>(
       API_ENDPOINTS.ADMIN.ENROLLMENT_APPROVE(id),
       request,
     );
     return response.data;
   }
 
-  async rejectEnrollment(id: number): Promise<AdminMessageResponse> {
-    const response = await axiosInstance.post<AdminMessageResponse>(
+  async rejectEnrollment(
+    id: number,
+    request: RejectEnrollmentRequest = {},
+  ): Promise<EnrollmentActionResponse> {
+    const response = await axiosInstance.post<EnrollmentActionResponse>(
       API_ENDPOINTS.ADMIN.ENROLLMENT_REJECT(id),
+      request,
+    );
+    return response.data;
+  }
+
+  async completeEnrollment(id: number): Promise<EnrollmentActionResponse> {
+    const response = await axiosInstance.post<EnrollmentActionResponse>(
+      API_ENDPOINTS.ADMIN.ENROLLMENT_COMPLETE(id),
+    );
+    return response.data;
+  }
+
+  async dropEnrollment(id: number): Promise<EnrollmentActionResponse> {
+    const response = await axiosInstance.post<EnrollmentActionResponse>(
+      API_ENDPOINTS.ADMIN.ENROLLMENT_DROP(id),
+    );
+    return response.data;
+  }
+
+  async switchDefaultEnrollment(id: number): Promise<EnrollmentActionResponse> {
+    const response = await axiosInstance.post<EnrollmentActionResponse>(
+      API_ENDPOINTS.ADMIN.ENROLLMENT_DEFAULT(id),
     );
     return response.data;
   }

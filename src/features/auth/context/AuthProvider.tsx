@@ -49,14 +49,17 @@ function AuthProvider({ children }: AuthProviderProps) {
   const login = useCallback(async (request: LoginRequest) => {
     const response = await authService.login(request);
 
-    setCurrentUser({
+    const authenticatedUser: AuthenticatedUser = {
       volunteerId: response.volunteerId,
       name: response.name,
       role: response.role,
       groupId: response.groupId,
       defaultPassword: response.defaultPassword,
-    });
+    };
+
+    setCurrentUser(authenticatedUser);
     setToken(response.token);
+    return authenticatedUser;
   }, []);
 
   const logout = useCallback(() => {

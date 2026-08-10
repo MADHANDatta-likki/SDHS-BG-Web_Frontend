@@ -1,0 +1,266 @@
+.admin-page { display:grid; gap:20px; width:min(1280px,100%); margin:0 auto; }
+.admin-page-header { display:flex; align-items:end; justify-content:space-between; gap:16px; }
+.admin-page-header h1 { color:var(--color-navy); font-size:clamp(1.5rem,3vw,2rem); }
+.admin-page-header p { margin-top:6px; color:var(--color-text-muted); }
+.admin-welcome,.admin-profile { padding:28px; border:1px solid var(--color-border); border-radius:18px; background:var(--color-surface); box-shadow:var(--shadow-sm); }
+.admin-welcome p,.admin-profile p { color:var(--color-text-muted); }
+.admin-welcome h1,.admin-profile h2 { margin:5px 0 12px; color:var(--color-navy); }
+.admin-welcome > span,.admin-profile span { display:inline-block; margin-right:7px; padding:5px 10px; border-radius:7px; background:var(--color-primary-soft); color:var(--color-navy); font-size:.75rem; font-weight:700; }
+.admin-card { overflow:hidden; border:1px solid var(--color-border); border-radius:16px; background:var(--color-surface); box-shadow:var(--shadow-sm); }
+.admin-card>header { display:flex; justify-content:space-between; gap:12px; padding:16px 20px; border-bottom:1px solid var(--color-border); background:var(--color-surface-header); }.admin-card>header h2{color:var(--color-navy);font-size:1rem}.admin-card>header span{color:var(--color-text-muted);font-size:.8rem;font-weight:700}.admin-card__body{display:grid;gap:18px;padding:20px}
+.admin-state { display:grid; justify-items:center; gap:13px; padding:40px 18px; text-align:center; color:var(--color-text-muted); }.admin-state--error{border:1px solid var(--color-danger);border-radius:10px;background:var(--color-danger-soft);color:var(--color-danger-strong)}
+.admin-spinner { width:32px;height:32px;border:3px solid var(--color-border-strong);border-top-color:var(--color-navy);border-radius:50%;animation:admin-spin .75s linear infinite}@keyframes admin-spin{to{transform:rotate(360deg)}}
+.admin-button { display:inline-flex; min-height:40px; width:fit-content; align-items:center; justify-content:center; padding:8px 15px; border:1px solid transparent; border-radius:8px; cursor:pointer; font:inherit; font-size:.8rem; font-weight:700 }.admin-button:disabled{cursor:not-allowed;opacity:.6}.admin-button--primary{background:var(--color-primary);color:var(--color-surface)}.admin-button--secondary{border-color:var(--color-border);background:var(--color-surface);color:var(--color-navy)}.admin-button--danger{border-color:var(--color-danger);background:var(--color-danger-soft);color:var(--color-danger-strong)}
+.admin-alert { padding:13px 16px;border:1px solid;border-radius:10px }.admin-alert--error{border-color:var(--color-danger);background:var(--color-danger-soft);color:var(--color-danger-strong)}.admin-alert--success{border-color:var(--color-success);background:var(--color-success-soft);color:var(--color-success-strong)}.admin-alert--info{border-color:var(--color-info);background:var(--color-info-soft);color:var(--color-info-strong)}
+.admin-confirmation p{margin:0}.admin-confirmation p + p{margin-top:8px}
+.admin-field { display:grid; align-content:start; gap:6px; color:var(--color-text); font-size:.76rem; font-weight:700; text-transform:capitalize }.admin-field input,.admin-field select,.admin-table input,.admin-table select{width:100%;min-height:40px;padding:8px 10px;border:1px solid var(--color-border);border-radius:8px;background:var(--color-surface);color:var(--color-text);font:inherit}.admin-check{display:flex;align-items:center;gap:8px;cursor:pointer}.admin-check input{width:18px;height:18px;accent-color:var(--color-primary)}.admin-check-grid{display:flex;flex-wrap:wrap;gap:12px}
+.admin-filter-grid,.admin-form-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); align-items:end; gap:12px }
+.admin-list{display:grid}.admin-list-row{display:grid;grid-template-columns:2fr 1fr;align-items:center;gap:15px;padding:14px 0;border:0;border-bottom:1px solid var(--color-border)}.admin-list-row legend{float:left;width:100%;margin-bottom:9px}
+.admin-syllabus-row{grid-template-columns:minmax(220px,2fr) minmax(180px,1fr) auto}
+.admin-tile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.admin-tile{display:grid;gap:12px;padding:16px;border:1px solid var(--color-border);border-radius:12px;background:var(--color-background);color:var(--color-text)}.admin-tile--link{text-decoration:none}.admin-tile h3{color:var(--color-navy)}.admin-tile dl{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.admin-tile dl div{display:grid;gap:2px}.admin-tile dt{color:var(--color-text-muted);font-size:.68rem;text-transform:uppercase}.admin-tile dd{margin:0;font-size:.84rem}
+.admin-row-actions{display:flex;flex-wrap:wrap;align-items:center;gap:9px}.admin-link-button{padding:0;border:0;background:none;color:var(--color-navy);cursor:pointer;font:inherit;font-size:.8rem;text-decoration:underline}.admin-link-button--danger{color:var(--color-danger-strong)}
+.admin-table-wrap{overflow-x:auto}.admin-table{width:100%;border-collapse:collapse;white-space:nowrap}.admin-table th,.admin-table td{padding:11px 10px;border-bottom:1px solid var(--color-border);text-align:left;font-size:.8rem}.admin-table thead th{color:var(--color-text-muted);font-size:.68rem;text-transform:uppercase}.admin-table td small{display:block;margin-top:3px;color:var(--color-text-muted)}.admin-table--inputs{min-width:800px}.admin-table--enrollments{min-width:1120px;white-space:normal}.admin-enrollment-actions{display:grid;min-width:260px;gap:10px}
+.admin-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}.admin-stats>div{display:grid;justify-items:center;gap:5px;padding:17px;border:1px solid var(--color-border);border-radius:12px;background:var(--color-surface);text-align:center}.admin-stats strong{color:var(--color-navy);font-size:1.35rem}.admin-stats span{color:var(--color-text-muted);font-size:.75rem}
+.admin-volunteer-stats{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}.admin-volunteer-filters{grid-template-columns:minmax(210px,1.4fr) repeat(4,minmax(125px,1fr)) auto}.admin-volunteer-filter-actions{align-self:end;flex-wrap:nowrap}.admin-badge{display:inline-flex;align-items:center;width:fit-content;padding:4px 9px;border-radius:999px;font-size:.68rem;font-weight:800;line-height:1.2}.admin-badge--active{background:var(--color-success-soft);color:var(--color-success-strong)}.admin-badge--inactive{background:var(--color-surface-muted);color:var(--color-text-body)}.admin-badge--dropped{background:var(--color-danger-soft);color:var(--color-danger-strong)}.admin-badge--student{background:var(--color-primary-soft);color:var(--color-navy)}.admin-badge--teacher{background:var(--color-success-soft);color:var(--color-success-strong)}.admin-badge--admin{background:var(--color-warning-soft);color:var(--color-warning-strong)}.admin-sort-button{display:inline-flex;align-items:center;gap:6px;padding:0;border:0;background:none;color:inherit;cursor:pointer;font:inherit;font-weight:inherit;text-transform:inherit}.admin-sort-button span{font-size:.62rem}.admin-volunteer-table{min-width:920px;white-space:normal}.admin-volunteer-table th,.admin-volunteer-table td{vertical-align:middle}.admin-volunteer-table td:first-child,.admin-volunteer-table td:nth-child(2){white-space:nowrap}.admin-volunteer-group{display:grid;max-width:260px;white-space:normal;line-height:1.35}.admin-volunteer-group small{margin-top:3px}.admin-volunteer-contact{display:grid;gap:4px;white-space:normal}.admin-volunteer-actions-column{position:sticky;right:0;background:var(--color-surface);box-shadow:var(--shadow-xs)}.admin-volunteer-table thead .admin-volunteer-actions-column{z-index:1}.admin-pagination{display:flex;align-items:end;justify-content:space-between;gap:14px;padding-top:4px}.admin-pagination>.admin-field{min-width:120px}.admin-pagination>span{align-self:center;color:var(--color-text-muted);font-size:.78rem;font-weight:700}
+.admin-modal-backdrop{position:fixed;z-index:1000;inset:0;display:grid;place-items:center;padding:24px;background:var(--color-overlay)}.admin-modal{display:flex;width:min(720px,100%);max-height:min(88vh,820px);flex-direction:column;overflow:hidden;border:1px solid var(--color-border);border-radius:16px;background:var(--color-surface);box-shadow:var(--shadow-lg)}.admin-modal__header{display:flex;flex:none;align-items:center;justify-content:space-between;gap:16px;padding:17px 20px;border-bottom:1px solid var(--color-border)}.admin-modal__header>div{display:grid;gap:3px}.admin-modal__header span{color:var(--color-text-muted);font-size:.7rem;font-weight:800;text-transform:uppercase}.admin-modal__header h2{color:var(--color-navy);font-size:1.12rem}.admin-modal__close{display:grid;width:38px;height:38px;place-items:center;border:1px solid var(--color-border);border-radius:50%;background:var(--color-surface);color:var(--color-navy);cursor:pointer;font-size:1.4rem;line-height:1}.admin-modal__form{display:flex;min-height:0;flex:1;flex-direction:column}.admin-modal__body{display:grid;min-height:0;overflow-y:auto;gap:20px;padding:20px}.admin-modal__section{display:grid;gap:14px}.admin-modal__section h3{padding-bottom:9px;border-bottom:1px solid var(--color-border);color:var(--color-navy);font-size:.88rem}.admin-volunteer-modal-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.admin-modal__status{min-height:64px}.admin-modal__status>span:first-child{color:var(--color-text);font-size:.76rem;font-weight:700}.admin-modal__check{min-height:40px;align-self:end}.admin-modal__danger-zone{padding:15px;border:1px solid var(--color-danger);border-radius:10px;background:var(--color-danger-soft)}.admin-modal__danger-zone>.admin-field{max-width:420px}.admin-modal__footer{display:flex;flex:none;justify-content:flex-end;gap:10px;padding:14px 20px;border-top:1px solid var(--color-border);background:var(--color-surface)}.admin-field input[readonly]{background:var(--color-surface-muted);color:var(--color-text-muted)}.admin-field input[aria-invalid=true]{border-color:var(--color-danger)}.admin-field-error{color:var(--color-danger-strong);font-size:.68rem;font-weight:600;text-transform:none}.admin-modal__close:focus-visible,.admin-sort-button:focus-visible{outline:3px solid var(--color-focus);outline-offset:2px}
+.admin-availability-date{max-width:280px}.admin-availability-list{display:grid}.admin-availability-row{display:grid;grid-template-columns:minmax(180px,1fr) minmax(260px,2fr) auto;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--color-border)}.admin-availability-row:last-child{border-bottom:0}.admin-availability-row__header{display:flex;align-items:center;gap:10px}.admin-availability-row__header>div{display:grid;gap:3px}.admin-availability-row__header strong{color:var(--color-navy)}.admin-availability-row__header>div span{color:var(--color-text-muted);font-size:.72rem}.admin-availability-status{padding:4px 8px;border-radius:999px;font-size:.68rem;font-weight:800}.admin-availability-status--submitted{background:var(--color-success-soft);color:var(--color-success-strong)}.admin-availability-status--pending{background:var(--color-warning-soft);color:var(--color-warning-strong)}.admin-availability-row__windows{display:flex;flex-wrap:wrap;gap:7px}.admin-availability-row__windows span{padding:5px 9px;border-radius:7px;background:var(--color-primary-soft);color:var(--color-navy);font-size:.72rem;font-weight:700}.admin-availability-row__windows em{color:var(--color-text-muted);font-size:.78rem}.admin-availability-editor{grid-column:1/-1;display:grid;gap:14px;padding:15px;border:1px solid var(--color-border);border-radius:10px;background:var(--color-surface-subtle)}.admin-availability-editor__actions{display:flex;gap:9px}
+.admin-booking-list{display:grid;gap:13px}.admin-booking{display:grid;gap:14px;padding:16px;border:1px solid var(--color-border);border-radius:12px;background:var(--color-background)}.admin-booking>header{display:flex;justify-content:space-between;gap:14px}.admin-booking>header div{display:grid;gap:3px}.admin-booking>header div:last-child{text-align:right}.admin-booking h3,.admin-booking strong{color:var(--color-navy);font-size:.9rem}.admin-booking header span{color:var(--color-text-muted);font-size:.75rem}
+.admin-batch{margin:0;padding:0;list-style:none}.admin-batch li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--color-border)}
+.admin-actions a:focus-visible,.admin-button:focus-visible,.admin-page input:focus-visible,.admin-page select:focus-visible,.admin-link-button:focus-visible,.admin-tile--link:focus-visible{outline:3px solid var(--color-focus);outline-offset:2px}
+@media(max-width:900px){.admin-volunteer-filters{grid-template-columns:repeat(2,minmax(150px,1fr))}.admin-volunteer-filter-actions{grid-column:1/-1}.admin-modal{width:min(640px,100%)}.admin-row-actions{align-items:stretch}}@media(max-width:640px){.admin-page-header,.admin-booking>header{align-items:start;flex-direction:column}.admin-list-row,.admin-availability-row{grid-template-columns:1fr}.admin-availability-row__header{justify-content:space-between}.admin-card__body,.admin-welcome,.admin-profile{padding:16px}.admin-booking>header div:last-child{text-align:left}.admin-tile dl{grid-template-columns:1fr}.admin-volunteer-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-volunteer-filters{grid-template-columns:1fr}.admin-volunteer-filter-actions{grid-column:auto}.admin-pagination{align-items:stretch;flex-direction:column}.admin-pagination>.admin-field{width:100%}.admin-pagination>span{align-self:flex-start}.admin-modal-backdrop{align-items:end;padding:10px}.admin-modal{width:100%;max-height:calc(100dvh - 20px);border-radius:14px}.admin-modal__header,.admin-modal__body,.admin-modal__footer{padding-right:15px;padding-left:15px}.admin-volunteer-modal-grid{grid-template-columns:1fr}.admin-modal__footer{position:sticky;bottom:0}.admin-modal__footer .admin-button{flex:1}.admin-row-actions .admin-button{flex:1 1 auto}}@media(prefers-reduced-motion:reduce){.admin-spinner{animation-duration:1.5s}}
+
+.admin-field-error { margin-top: 1px; line-height: 1.4; }
+.admin-table tbody tr:last-child > * { border-bottom: 0; }
+.admin-volunteer-actions-column { min-width: 176px; padding-right: 16px; padding-left: 16px; }
+.admin-modal { width: min(680px, 100%); }
+.admin-modal__header h2 { margin: 0; font-weight: 650; line-height: 1.3; }
+.admin-modal__close { flex: 0 0 38px; }
+.admin-modal__section { gap: 16px; }
+
+/* Admin operations-center composition; shared cards, statistics, states, and actions
+   continue to come from the canonical theme component layer. */
+.admin-operations-section {
+  display: grid;
+  gap: 14px;
+}
+
+.admin-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.admin-section-heading > div {
+  display: grid;
+  gap: 3px;
+}
+
+.admin-section-heading h2,
+.admin-section-heading p {
+  margin: 0;
+}
+
+.admin-section-heading h2 {
+  color: var(--color-text);
+  font-size: 1.05rem;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.admin-section-heading p {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.admin-dashboard__overview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: stretch;
+  gap: 16px;
+}
+
+.admin-dashboard__overview-grid > * {
+  min-width: 0;
+  height: 100%;
+}
+
+.admin-dashboard__inline-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+}
+
+.admin-dashboard__inline-metrics span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}
+
+.admin-dashboard__inline-metrics strong {
+  color: var(--color-primary);
+  font-size: 1.15rem;
+}
+
+.admin-dashboard__more-actions {
+  display: grid;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.admin-dashboard__more-actions summary {
+  width: fit-content;
+  cursor: pointer;
+  color: var(--color-text-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.admin-availability-reminder-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 12px;
+}
+
+.admin-availability-reminder-note span {
+  font-size: 0.8rem;
+}
+
+/* Reports composition; canonical cards, statistics, tables, states, and buttons
+   remain shared with the rest of the Admin experience. */
+.admin-report-stats--compact {
+  grid-template-columns: repeat(2, minmax(160px, 1fr));
+  width: min(560px, 100%);
+}
+
+.admin-report-navigation-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+}
+
+.admin-report-navigation-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.admin-report-navigation-row > div {
+  display: grid;
+  gap: 4px;
+}
+
+.admin-report-navigation-row strong {
+  color: var(--color-text);
+  font-size: 0.86rem;
+}
+
+.admin-report-navigation-row p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.admin-report-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.admin-report-profile > div:first-child {
+  min-width: 0;
+}
+
+.admin-report-profile h2,
+.admin-report-profile p {
+  margin: 0;
+}
+
+.admin-report-profile h2 {
+  margin-bottom: 6px;
+}
+
+.admin-report-profile__badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 7px;
+}
+
+.admin-report-profile__badges span {
+  margin: 0;
+}
+
+.admin-report-table {
+  min-width: 780px;
+  white-space: normal;
+}
+
+.admin-report-table th,
+.admin-report-table td {
+  vertical-align: top;
+}
+
+.admin-report-table__comment {
+  min-width: 200px;
+  max-width: 340px;
+  line-height: 1.45;
+}
+
+/* Workflow-density refinements: controls stay close to their results while
+   primary identity/action columns remain quickest to scan. */
+.admin-page > .admin-card:has(.admin-filter-grid) { position: sticky; z-index: 5; top: calc(var(--app-header-height) + 8px); }
+.admin-page > .admin-card:has(.admin-filter-grid) .admin-card__body { padding-block: 14px; }
+.admin-filter-grid { row-gap: 10px; }
+.admin-table tbody td:first-child { color: var(--color-text); font-weight: 650; }
+.admin-table tbody td small { font-weight: 500; }
+.admin-table tbody td:not(:first-child):not(:last-child) { color: var(--color-text-body); }
+.admin-volunteer-actions-column .admin-row-actions { justify-content: flex-end; }
+.admin-enrollment-actions { gap: 8px; }
+.admin-enrollment-actions .admin-row-actions { padding-top: 2px; }
+.admin-modal__footer .admin-button--primary { order: 2; }
+.admin-dashboard__pending { order: 1; }
+.admin-dashboard__readiness { order: 2; }
+.admin-dashboard__today { order: 3; }
+.admin-dashboard__operations { order: 4; }
+.admin-dashboard > .dashboard-quick-actions { order: 5; }
+
+@media(max-width:900px) {
+  .admin-page > .admin-card:has(.admin-filter-grid) { position: static; }
+}
+
+@media(max-width:900px) {
+  .admin-dashboard__overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width:640px) {
+  .admin-section-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .admin-report-stats--compact {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .admin-report-navigation-row,
+  .admin-report-profile {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-report-navigation-row .admin-button {
+    width: 100%;
+  }
+
+  .admin-report-profile__badges {
+    justify-content: flex-start;
+  }
+}

@@ -1,17 +1,89 @@
 :root {
-  --color-primary: #e65100;
-  --color-primary-dark: #bf360c;
-  --color-primary-light: #ff9800;
-  --color-navy: #1a237e;
-  --color-navy-light: #283593;
-  --color-background: #f8f4f0;
-  --color-surface: #ffffff;
-  --color-text: #2d3436;
-  --color-text-body: #4a4a5a;
-  --color-text-muted: #636e72;
-  --color-border: #e8e0d8;
-  --color-focus: #ff9800;
-  --color-danger: #c62828;
-  --color-sidebar-hover: rgba(255, 255, 255, 0.1);
-  --color-sidebar-active: rgba(230, 81, 0, 0.24);
+  color-scheme: light;
+
+  --color-background: #f2e6cf;
+  --color-surface: #f8f1e3;
+  --color-surface-subtle: #f5ead5;
+  --color-surface-muted: #efe2c8;
+  --color-surface-header: #ead9bb;
+  --color-input: #fbf3e3;
+  --color-header: #f4e9d5;
+  --color-sidebar: #efe2c8;
+  --color-surface-96: rgba(248, 241, 227, 0.96);
+  --color-surface-94: rgba(248, 241, 227, 0.94);
+  --color-surface-88: rgba(248, 241, 227, 0.88);
+
+  --color-primary: #465a87;
+  --color-primary-hover: #536b9c;
+  --color-primary-soft: #e2dfdc;
+  --color-row-hover: rgba(168, 116, 50, 0.08);
+  --color-secondary: #796b59;
+  --color-secondary-hover: #675a4b;
+  --color-accent: #a87432;
+  --color-accent-hover: #936329;
+  --color-accent-strong: #76501f;
+  --color-accent-soft: #dfc59a;
+
+  --color-success: #72835a;
+  --color-success-strong: #52623f;
+  --color-success-soft: #e2e6d5;
+  --color-warning: #a87432;
+  --color-warning-strong: #725022;
+  --color-warning-soft: #eee0c3;
+  --color-danger: #a45a4e;
+  --color-danger-strong: #7d4038;
+  --color-danger-soft: #eedbd4;
+  --color-info: #64749a;
+  --color-info-strong: #465a87;
+  --color-info-soft: #dedfe3;
+
+  --color-text: #2e261d;
+  --color-text-body: #493e33;
+  --color-text-muted: #5e5244;
+  --color-text-on-primary: #ffffff;
+  --color-text-on-accent: #2e261d;
+  --color-text-on-primary-muted: rgba(255, 255, 255, 0.72);
+  --color-control-on-primary: rgba(255, 255, 255, 0.45);
+  --color-border: #c9ae86;
+  --color-border-strong: #ad9067;
+  --color-focus: #465a87;
+  --focus-ring: 0 0 0 3px rgba(70, 90, 135, 0.2);
+  --color-progress-track: #dfcfb1;
+
+  --shadow-xs: 0 1px 2px rgba(70, 48, 25, 0.025);
+  --shadow-sm: 0 2px 5px rgba(70, 48, 25, 0.035);
+  --shadow-md: 0 5px 14px rgba(70, 48, 25, 0.045);
+  --shadow-lg: 0 10px 24px rgba(70, 48, 25, 0.065);
+  --color-overlay: rgba(47, 59, 77, 0.34);
+  --color-mobile-overlay: rgba(47, 59, 77, 0.3);
+  --dashboard-overlay: rgba(242, 230, 207, 0.2);
+
+  --radius-sm: 7px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+
+  --font-size-xs: 0.6875rem;
+  --font-size-sm: 0.75rem;
+  --font-size-md: 0.8125rem;
+  --font-size-lg: 0.95rem;
+  --line-height-compact: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+
+  /* Compatibility aliases retained for existing shared styles. */
+  --color-primary-dark: var(--color-primary-hover);
+  --color-primary-light: var(--color-secondary);
+  --color-navy: var(--color-primary);
+  --color-navy-light: var(--color-primary-hover);
+  --color-sidebar-hover: rgba(168, 116, 50, 0.09);
+  --color-sidebar-active: var(--color-accent-soft);
 }

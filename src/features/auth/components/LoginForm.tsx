@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 
-import { ROUTES } from "../../../constants/RouteConstants";
+import { getPostLoginRoute } from "../../../constants/RouteConstants";
 import { useAuth } from "../hooks/useAuth";
 import type { AuthErrorResponse } from "../types/AuthErrorResponse";
 
@@ -53,8 +53,8 @@ function LoginForm() {
     setServerError("");
 
     try {
-      await login(values);
-      navigate(ROUTES.DASHBOARD, { replace: true });
+      const authenticatedUser = await login(values);
+      navigate(getPostLoginRoute(authenticatedUser.role), { replace: true });
     } catch (error: unknown) {
       setServerError(getLoginErrorMessage(error));
     }

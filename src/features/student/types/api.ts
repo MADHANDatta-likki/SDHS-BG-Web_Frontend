@@ -1,4 +1,20 @@
 import type { ApiMessageResponse } from "../../../types/api";
+import type {
+  LearningEnrollment,
+  LearningEnrollmentStatus,
+  ProgramType,
+} from "../../../types/Enrollment";
+
+export type BatchType = ProgramType;
+
+export type EnrollmentStatus = LearningEnrollmentStatus;
+
+export type StudentLearningEnrollment = LearningEnrollment;
+
+export interface StudentLearningEnrollmentsResponse {
+  enrollments: StudentLearningEnrollment[];
+  total: number;
+}
 
 export interface StudentHomeBooking {
   id: number;
@@ -30,6 +46,42 @@ export interface StudentHomeResponse {
   chapterCounts: Record<string, number>;
   gradeDist: Record<string, number>;
   bookings: StudentHomeBooking[];
+  learningProgress: LearningProgress;
+}
+
+export interface LearningProgressExam {
+  bookingId: number;
+  date: string | null;
+  chapterNumber: number | null;
+  chapterName: string | null;
+  slokaCount: number | null;
+  memorizationGrade: string | null;
+  pronunciationGrade: string | null;
+}
+
+export interface LearningProgressSyllabusChapter {
+  chapterId: number;
+  chapterNumber: number;
+  chapterName: string;
+  allowedSlokas: string;
+}
+
+export interface LearningProgress {
+  overallProgressPercent: number;
+  completedChapters: number;
+  totalChapters: number;
+  completedSlokas: number;
+  totalSlokas: number;
+  remainingSlokas: number;
+  latestGradedExam: LearningProgressExam | null;
+  latestBooking: LearningProgressExam | null;
+  currentSyllabus: LearningProgressSyllabusChapter[];
+  attendance: { present: number; total: number; percent: string };
+  gradeSummary: {
+    completedExams: number;
+    awaitingFinalGrade: number;
+    retests: number;
+  };
 }
 
 export interface StudentSlot {
@@ -103,6 +155,7 @@ export interface StudentGrade {
 export interface StudentGradesResponse {
   volunteerId: string;
   studentName: string;
+  groupId?: string | null;
   grades: StudentGrade[];
 }
 

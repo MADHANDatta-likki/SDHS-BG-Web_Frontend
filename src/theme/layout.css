@@ -1,7 +1,7 @@
 @import "./colors.css";
 
 .app-shell {
-  --app-header-height: 72px;
+  --app-header-height: 68px;
   --app-sidebar-width: 264px;
 
   min-height: 100vh;
@@ -40,10 +40,10 @@
   justify-content: space-between;
   gap: 20px;
   padding: 0 24px;
-  border-bottom: 3px solid var(--color-primary);
-  background: var(--color-navy);
-  box-shadow: 0 4px 12px rgba(26, 35, 126, 0.22);
-  color: #ffffff;
+  border-bottom: 1px solid var(--color-accent);
+  background: var(--color-header);
+  box-shadow: none;
+  color: var(--color-text);
 }
 
 .app-header__brand-group,
@@ -65,10 +65,10 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.42);
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.8px;
@@ -88,10 +88,10 @@
   height: 42px;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.24);
+  border: 1px solid var(--color-border);
   border-radius: 9px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background: var(--color-sidebar);
+  color: var(--color-primary);
   cursor: pointer;
   font-size: 1.25rem;
 }
@@ -104,10 +104,10 @@
 .app-header__logout {
   min-height: 38px;
   padding: 8px 15px;
-  border: 1px solid rgba(230, 81, 0, 0.52);
+  border: 1px solid var(--color-primary);
   border-radius: 9px;
-  background: rgba(230, 81, 0, 0.28);
-  color: #ffffff;
+  background: var(--color-primary);
+  color: var(--color-text-on-primary);
   cursor: pointer;
   font: inherit;
   font-size: 0.8125rem;
@@ -115,7 +115,9 @@
 }
 
 .app-header__logout:hover {
-  background: rgba(230, 81, 0, 0.44);
+  border-color: var(--color-primary-hover);
+  background: var(--color-primary-hover);
+  color: var(--color-text-on-primary);
 }
 
 .app-user-menu {
@@ -126,10 +128,10 @@
   gap: 10px;
   min-height: 44px;
   padding: 4px 9px 4px 5px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  background: var(--color-surface);
+  color: var(--color-text);
   cursor: pointer;
   font: inherit;
   text-align: left;
@@ -143,6 +145,7 @@
   justify-content: center;
   border-radius: 9px;
   background: var(--color-primary);
+  color: var(--color-text-on-primary);
   font-size: 0.875rem;
   font-weight: 800;
 }
@@ -162,13 +165,13 @@
 }
 
 .app-user-menu__role {
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--color-text-muted);
   font-size: 0.6875rem;
   letter-spacing: 0.4px;
 }
 
 .app-user-menu__chevron {
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--color-secondary);
 }
 
 .app-user-menu__panel {
@@ -181,7 +184,7 @@
   border: 1px solid var(--color-border);
   border-radius: 12px;
   background: var(--color-surface);
-  box-shadow: 0 16px 36px rgba(26, 35, 126, 0.18);
+  box-shadow: var(--shadow-lg);
   color: var(--color-text);
 }
 
@@ -191,6 +194,7 @@
   border-bottom: 1px solid var(--color-border);
   font-size: 0.9375rem;
   font-weight: 800;
+  overflow-wrap: anywhere;
 }
 
 .app-user-menu__panel-row {
@@ -203,6 +207,7 @@
 }
 
 .app-user-menu__panel-row strong {
+  min-width: 0;
   overflow: hidden;
   color: var(--color-text-body);
   text-overflow: ellipsis;
@@ -218,13 +223,14 @@
   width: var(--app-sidebar-width);
   overflow-y: auto;
   padding: 24px 14px;
-  background: var(--color-navy);
-  color: #ffffff;
+  border-right: 1px solid var(--color-border);
+  background: var(--color-sidebar);
+  color: var(--color-text);
 }
 
 .app-sidebar__heading {
   margin: 0 12px 12px;
-  color: rgba(255, 255, 255, 0.58);
+  color: var(--color-text-muted);
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 1.4px;
@@ -240,13 +246,14 @@
 }
 
 .app-navigation__link {
+  position: relative;
   display: flex;
   min-height: 44px;
   align-items: center;
   gap: 12px;
   padding: 10px 12px;
   border-radius: 9px;
-  color: rgba(255, 255, 255, 0.86);
+  color: var(--color-text-body);
   font-size: 0.8125rem;
   font-weight: 600;
   text-decoration: none;
@@ -254,12 +261,24 @@
 
 .app-navigation__link:hover {
   background: var(--color-sidebar-hover);
-  color: #ffffff;
+  color: var(--color-text);
 }
 
 .app-navigation__link--active {
   background: var(--color-sidebar-active);
-  color: #ffffff;
+  color: var(--color-text);
+  font-weight: 650;
+}
+
+.app-navigation__link--active::before {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 0;
+  width: 4px;
+  border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
+  background: var(--color-accent);
+  content: "";
 }
 
 .app-navigation__marker {
@@ -271,8 +290,8 @@
 }
 
 .app-navigation__link--active .app-navigation__marker {
-  border-color: var(--color-primary-light);
-  background: var(--color-primary-light);
+  border-color: var(--color-accent);
+  background: var(--color-accent);
 }
 
 .app-content {
@@ -281,6 +300,18 @@
   padding: calc(var(--app-header-height) + 32px) 32px 32px;
   overflow: auto;
   background: var(--color-background);
+}
+
+.app-content > * {
+  min-width: 0;
+}
+
+.app-content__loading {
+  display: grid;
+  min-height: 220px;
+  place-items: center;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
 }
 
 .app-shell__backdrop {
@@ -326,7 +357,7 @@
     display: block;
     width: 100%;
     border: 0;
-    background: rgba(18, 22, 54, 0.46);
+    background: var(--color-mobile-overlay);
     cursor: pointer;
   }
 }
@@ -368,6 +399,17 @@
   .app-user-menu__panel {
     right: -56px;
     width: min(280px, calc(100vw - 24px));
+  }
+
+  .app-user-menu__panel-row {
+    align-items: start;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .app-user-menu__panel-row strong {
+    max-width: 100%;
+    white-space: normal;
   }
 
   .app-header__logout {

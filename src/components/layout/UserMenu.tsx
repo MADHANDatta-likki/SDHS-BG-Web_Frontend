@@ -10,6 +10,7 @@ function UserMenu({ user }: UserMenuProps) {
   const [open, setOpen] = useState(false);
   const menuId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const closeOnOutsideClick = (event: MouseEvent) => {
@@ -22,8 +23,9 @@ function UserMenu({ user }: UserMenuProps) {
     };
 
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key === "Escape" && open) {
         setOpen(false);
+        triggerRef.current?.focus();
       }
     };
 
@@ -34,16 +36,17 @@ function UserMenu({ user }: UserMenuProps) {
       document.removeEventListener("mousedown", closeOnOutsideClick);
       document.removeEventListener("keydown", closeOnEscape);
     };
-  }, []);
+  }, [open]);
 
   return (
     <div className="app-user-menu" ref={containerRef}>
       <button
+        ref={triggerRef}
         className="app-user-menu__trigger"
         type="button"
         aria-expanded={open}
         aria-controls={menuId}
-        aria-haspopup="dialog"
+        aria-haspopup="true"
         onClick={() => setOpen((current) => !current)}
       >
         <span className="app-user-menu__avatar" aria-hidden="true">
@@ -62,7 +65,7 @@ function UserMenu({ user }: UserMenuProps) {
         <div
           id={menuId}
           className="app-user-menu__panel"
-          role="dialog"
+          role="region"
           aria-label="User profile"
         >
           <div className="app-user-menu__panel-name">{user.name}</div>

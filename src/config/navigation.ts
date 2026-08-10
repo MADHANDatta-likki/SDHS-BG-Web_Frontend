@@ -11,6 +11,7 @@ const dashboardItem: NavigationItemConfig = {
 };
 
 const studentNavigation: NavigationItemConfig[] = [
+  { label: "My Learning", path: ROUTES.STUDENT.MY_LEARNING },
   dashboardItem,
   { label: "Book Slot", path: ROUTES.STUDENT.SLOTS },
   { label: "Exam History", path: ROUTES.STUDENT.GRADES },
@@ -19,6 +20,7 @@ const studentNavigation: NavigationItemConfig[] = [
 
 const teacherNavigation: NavigationItemConfig[] = [
   dashboardItem,
+  { label: "My Availability", path: ROUTES.TEACHER.MY_AVAILABILITY },
   { label: "Exam Grading", path: ROUTES.TEACHER.DASHBOARD },
   { label: "Attendance", path: ROUTES.TEACHER.ATTENDANCE },
 ];

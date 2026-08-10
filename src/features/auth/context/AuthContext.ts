@@ -5,7 +5,7 @@ import type { JWTToken } from "../types/JWTToken";
 import type { LoginRequest } from "../types/LoginRequest";
 
 export interface AuthContextValue {
-  login: (request: LoginRequest) => Promise<void>;
+  login: (request: LoginRequest) => Promise<AuthenticatedUser>;
   logout: () => void;
   currentUser: AuthenticatedUser | null;
   token: JWTToken | null;

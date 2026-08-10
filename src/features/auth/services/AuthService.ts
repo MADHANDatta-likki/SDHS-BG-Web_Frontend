@@ -1,4 +1,4 @@
-import axiosInstance from "../../../api/axios";
+import axiosInstance, { setApiAccessToken } from "../../../api/axios";
 import { API_ENDPOINTS } from "../../../constants/ApiEndpoints";
 import { AUTH_STORAGE_KEYS } from "../../../constants/AuthConstants";
 import type { AuthenticatedUser } from "../types/AuthenticatedUser";
@@ -39,7 +39,9 @@ class AuthService {
       defaultPassword: response.data.defaultPassword,
     };
 
-    localStorage.setItem(AUTH_STORAGE_KEYS.TOKEN, response.data.token);
+    const token = response.data.token.trim();
+    localStorage.setItem(AUTH_STORAGE_KEYS.TOKEN, token);
+    setApiAccessToken(token);
     localStorage.setItem(
       AUTH_STORAGE_KEYS.CURRENT_USER,
       JSON.stringify(currentUser),
@@ -60,6 +62,7 @@ class AuthService {
   }
 
   logout(): void {
+    setApiAccessToken(null);
     localStorage.removeItem(AUTH_STORAGE_KEYS.TOKEN);
     localStorage.removeItem(AUTH_STORAGE_KEYS.CURRENT_USER);
   }
@@ -82,7 +85,16 @@ class AuthService {
   }
 
   getToken(): JWTToken | null {
-    return localStorage.getItem(AUTH_STORAGE_KEYS.TOKEN);
+    const storedToken = localStorage.getItem(AUTH_STORAGE_KEYS.TOKEN);
+    const token = storedToken?.trim() ?? "";
+
+    if (token.length === 0) {
+      setApiAccessToken(null);
+      return null;
+    }
+
+    setApiAccessToken(token);
+    return token;
   }
 }
 

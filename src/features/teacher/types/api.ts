@@ -14,6 +14,24 @@ export interface TeacherHomeResponse {
   chapterCounts: Record<string, number>;
 }
 
+export interface TeacherAvailabilitySlot {
+  id: number;
+  name: string;
+}
+
+export interface TeacherAvailabilityResponse {
+  examDate: string;
+  availableSlots: TeacherAvailabilitySlot[];
+  selectedSlotIds: number[];
+}
+
+export interface SaveTeacherAvailabilityRequest {
+  examDate: string;
+  slotIds: number[];
+}
+
+export type SaveTeacherAvailabilityResponse = ApiMessageResponse;
+
 export interface TeacherDashboardBooking {
   id: number;
   date: string | null;
