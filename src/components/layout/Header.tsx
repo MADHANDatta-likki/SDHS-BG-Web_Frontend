@@ -1,4 +1,5 @@
 import type { AuthenticatedUser } from "../../features/auth/types/AuthenticatedUser";
+import logo from "../../assets/images/logo.png";
 import UserMenu from "./UserMenu";
 
 interface HeaderProps {
@@ -28,10 +29,8 @@ function Header({
           <span aria-hidden="true">☰</span>
         </button>
 
-        <div className="app-header__logo" aria-label="SDHS logo placeholder">
-          SDHS
-        </div>
-        <div className="app-header__title">Bhagavad Gita Memorization</div>
+        <img className="app-header__logo" src={logo} alt="SDHS Learning Portal" />
+        <div className="app-header__title">SDHS Learning Portal</div>
       </div>
 
       <div className="app-header__actions">

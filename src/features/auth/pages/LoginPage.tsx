@@ -1,3 +1,4 @@
+import logo from "../../../assets/images/logo.png";
 import LoginForm from "../components/LoginForm";
 import "../styles/login.css";
 
@@ -12,6 +13,7 @@ function LoginPage() {
 
       <main className="login-page__main">
         <div className="login-page__content">
+          <img className="login-page__logo" src={logo} alt="SDHS Learning Portal" />
           <section className="login-page__card" aria-labelledby="login-title">
             <div className="login-page__eyebrow">Volunteer Portal</div>
             <h1 id="login-title" className="login-page__title">

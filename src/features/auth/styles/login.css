@@ -91,7 +91,18 @@
 .login-page__content {
   position: relative;
   z-index: 1;
+  display: grid;
   width: min(100%, 460px);
+  justify-items: center;
+}
+
+.login-page__logo {
+  display: block;
+  width: auto;
+  height: 88px;
+  max-width: min(220px, 72vw);
+  margin-bottom: 20px;
+  object-fit: contain;
 }
 
 .login-page__card,
@@ -102,6 +113,7 @@
 }
 
 .login-page__card {
+  width: 100%;
   padding: 32px;
   border-radius: 20px;
 }
@@ -418,6 +430,11 @@
   .login-page__card {
     padding: 24px 20px;
     border-radius: 16px;
+  }
+
+  .login-page__logo {
+    height: 72px;
+    margin-bottom: 16px;
   }
 
   .login-page__title {

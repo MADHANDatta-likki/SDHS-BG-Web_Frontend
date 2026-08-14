@@ -59,19 +59,12 @@
 }
 
 .app-header__logo {
-  display: inline-flex;
-  width: 48px;
-  height: 42px;
+  display: block;
+  width: auto;
+  height: 52px;
+  max-width: 132px;
   flex: 0 0 auto;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  background: var(--color-primary-soft);
-  color: var(--color-primary);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.8px;
+  object-fit: contain;
 }
 
 .app-header__title {
@@ -378,9 +371,9 @@
   }
 
   .app-header__logo {
-    width: 40px;
-    height: 38px;
-    font-size: 0.625rem;
+    width: auto;
+    height: 44px;
+    max-width: 104px;
   }
 
   .app-header__title,
