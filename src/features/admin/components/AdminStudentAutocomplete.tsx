@@ -5,13 +5,11 @@ import type { BulkBookingStudent } from "../types/api";
 
 interface AdminStudentAutocompleteProps {
   selectedVolunteerId: string;
-  self: BulkBookingStudent;
   onSelect: (student: BulkBookingStudent) => void;
 }
 
 function AdminStudentAutocomplete({
   selectedVolunteerId,
-  self,
   onSelect,
 }: AdminStudentAutocompleteProps) {
   const inputId = useId();
@@ -69,32 +67,23 @@ function AdminStudentAutocomplete({
   return (
     <div className="admin-field admin-student-search">
       <label htmlFor={inputId}>Student</label>
-      <div className="admin-student-search__controls">
-        <input
-          id={inputId}
-          type="search"
-          role="combobox"
-          aria-autocomplete="list"
-          aria-controls={listboxId}
-          aria-expanded={results.length > 0}
-          aria-describedby={`${inputId}-help`}
-          placeholder="Search by name or Volunteer ID"
-          value={query}
-          onChange={(event) => {
-            setQuery(event.target.value);
-            if (selectedVolunteerId) {
-              onSelect({ volunteerId: "", name: "", groupId: null });
-            }
-          }}
-        />
-        <button
-          className="admin-button admin-button--secondary"
-          type="button"
-          onClick={() => choose(self)}
-        >
-          Book for Myself
-        </button>
-      </div>
+      <input
+        id={inputId}
+        type="search"
+        role="combobox"
+        aria-autocomplete="list"
+        aria-controls={listboxId}
+        aria-expanded={results.length > 0}
+        aria-describedby={`${inputId}-help`}
+        placeholder="Search by name or Volunteer ID"
+        value={query}
+        onChange={(event) => {
+          setQuery(event.target.value);
+          if (selectedVolunteerId) {
+            onSelect({ volunteerId: "", name: "", groupId: null });
+          }
+        }}
+      />
       <small id={`${inputId}-help`}>Enter at least 2 characters.</small>
       {loading && <small role="status">Searching students...</small>}
       {error && <small className="admin-field-error" role="alert">{error}</small>}

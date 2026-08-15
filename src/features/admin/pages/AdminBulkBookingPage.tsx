@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-import { useAuth } from "../../auth/hooks/useAuth";
 import {
   formatChapterLabel,
   isSupplementalChapter,
@@ -15,7 +14,6 @@ import "../styles/admin.css";
 
 const iso = () => { const date = new Date(); date.setDate(date.getDate() + ((7 - date.getDay()) % 7)); return date.toISOString().slice(0, 10); };
 function AdminBulkBookingPage() {
-  const { currentUser } = useAuth();
   const [date, setDate] = useState(iso());
   const load = useCallback(() => adminService.getBulkBooking({ date }), [date]);
   const { data, loading, error, reload } = useAdminResource(load, "Failed to load bulk booking.");
@@ -49,7 +47,7 @@ function AdminBulkBookingPage() {
           <AdminCard title="Add Booking">
             <div className="admin-form-grid">
               <label className="admin-field">Track Type<select required value={trackType} onChange={(event) => { setTrackType(event.target.value as BulkBookingTrackType | ""); setEntries([]); }}><option value="">Select track type</option><option value="MEMORIZATION">Memorization</option><option value="REVISION">Revision</option></select></label>
-              {currentUser && <AdminStudentAutocomplete selectedVolunteerId={student} self={{ volunteerId: currentUser.volunteerId, name: currentUser.name, groupId: currentUser.groupId }} onSelect={(selectedStudent) => setStudent(selectedStudent.volunteerId)} />}
+              <AdminStudentAutocomplete selectedVolunteerId={student} onSelect={(selectedStudent) => setStudent(selectedStudent.volunteerId)} />
               <label className="admin-field">Slot<select value={slot} onChange={(event) => setSlot(event.target.value)}><option value="">Select slot</option>{data.slots.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
               <label className="admin-field">Chapter<select value={chapter} onChange={(event) => setChapter(event.target.value)}><option value="">Select chapter</option>{data.chapters.map((item) => <option key={item.id} value={item.id}>{formatChapterLabel(item.chapterNumber, item.chapterName, "Ch")}</option>)}</select></label>
               <label className="admin-field">Sloka Count<select value={count} onChange={(event) => setCount(event.target.value)}><option value="">Select count</option>{allowed.map((value) => <option key={value}>{value}</option>)}</select></label>
