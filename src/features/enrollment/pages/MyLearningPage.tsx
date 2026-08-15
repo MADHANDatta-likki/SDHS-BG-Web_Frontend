@@ -47,7 +47,10 @@ function MyLearningPage() {
     groupedEnrollments.ACTIVE.length > 0 ||
     groupedEnrollments.PENDING.length > 0;
 
-  const openDashboard = (enrollment: LearningEnrollment) => {
+  const openEnrollmentRoute = (
+    enrollment: LearningEnrollment,
+    route: string,
+  ) => {
     setNavigationError("");
     if (enrollmentContext === undefined) {
       setNavigationError(
@@ -58,12 +61,20 @@ function MyLearningPage() {
 
     try {
       enrollmentContext.setSelectedEnrollment(enrollment);
-      navigate(ROUTES.DASHBOARD);
+      navigate(route);
     } catch {
       setNavigationError(
         "Unable to open the dashboard. Please try again.",
       );
     }
+  };
+
+  const openDashboard = (enrollment: LearningEnrollment) => {
+    openEnrollmentRoute(enrollment, ROUTES.DASHBOARD);
+  };
+
+  const bookSlot = (enrollment: LearningEnrollment) => {
+    openEnrollmentRoute(enrollment, ROUTES.STUDENT.SLOTS);
   };
 
   return (
@@ -136,6 +147,7 @@ function MyLearningPage() {
                     <EnrollmentCard
                       key={enrollment.enrollmentId ?? enrollment.id}
                       enrollment={enrollment}
+                      onBookSlot={bookSlot}
                       onOpenDashboard={openDashboard}
                     />
                   ))}

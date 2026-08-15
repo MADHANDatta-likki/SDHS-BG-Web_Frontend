@@ -4,6 +4,7 @@ import ProgramBadge from "./ProgramBadge";
 
 interface EnrollmentCardProps {
   enrollment: LearningEnrollment;
+  onBookSlot: (enrollment: LearningEnrollment) => void;
   onOpenDashboard: (enrollment: LearningEnrollment) => void;
 }
 
@@ -59,9 +60,11 @@ function buildTimelineSteps(
 
 function EnrollmentCard({
   enrollment,
+  onBookSlot,
   onOpenDashboard,
 }: EnrollmentCardProps) {
   const program = enrollment.programType ?? enrollment.batchType;
+  const supportsExams = program !== "FLUENT";
   const status = enrollment.enrollmentStatus ?? enrollment.status;
   const isDefault = enrollment.isDefault ?? enrollment.defaultEnrollment;
   const group = enrollment.groupName?.trim() || enrollment.groupId?.trim();
@@ -145,13 +148,24 @@ function EnrollmentCard({
       </footer>
       <div className="enrollment-card__action">
         {status === "ACTIVE" ? (
-          <button
-            className="student-button student-button--primary"
-            type="button"
-            onClick={() => onOpenDashboard(enrollment)}
-          >
-            Open Dashboard
-          </button>
+          <>
+            {supportsExams && (
+              <button
+                className="student-button student-button--secondary"
+                type="button"
+                onClick={() => onBookSlot(enrollment)}
+              >
+                Book Slot
+              </button>
+            )}
+            <button
+              className="student-button student-button--primary"
+              type="button"
+              onClick={() => onOpenDashboard(enrollment)}
+            >
+              Open Dashboard
+            </button>
+          </>
         ) : status === "PENDING" ? (
           <p className="enrollment-card__pending" role="status">
             Waiting for Admin Approval

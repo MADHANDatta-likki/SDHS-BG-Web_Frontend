@@ -16,8 +16,8 @@ import "../styles/student.css";
 
 const examActions: readonly DashboardAction[] = [
   { to: ROUTES.STUDENT.SLOTS, icon: "📅", title: "Book Slot", description: "Book your upcoming exam" },
-  { to: ROUTES.STUDENT.GRADES, icon: "🏆", title: "Exam History", description: "Review results and feedback" },
   { to: ROUTES.STUDENT.ATTENDANCE, icon: "📋", title: "Attendance", description: "View your class attendance" },
+  { to: ROUTES.STUDENT.GRADES, icon: "🏆", title: "Exam History", description: "Review results and feedback" },
 ];
 
 const myLearningAction: DashboardAction = {
@@ -69,6 +69,10 @@ function StudentDashboardPage() {
       </DashboardPageHeader>
 
       <CurrentEnrollmentSummary />
+      <section className="dashboard-quick-actions" aria-labelledby="student-quick-actions-title">
+        <div className="dashboard-section-heading"><h2 id="student-quick-actions-title">Quick Actions</h2><p>Open the tools for your current learning workspace.</p></div>
+        <DashboardActions actions={actions} ariaLabel="Student quick actions" />
+      </section>
       {loading && <StudentState type="loading" message="Loading your learning workspace..." />}
       {!loading && error && <StudentState type="error" message={error} onRetry={() => void reload()} />}
 
@@ -121,10 +125,6 @@ function StudentDashboardPage() {
         </>
       )}
 
-      <section className="dashboard-quick-actions" aria-labelledby="student-quick-actions-title">
-        <div className="dashboard-section-heading"><h2 id="student-quick-actions-title">Quick Actions</h2><p>Open the tools for your current learning workspace.</p></div>
-        <DashboardActions actions={actions} ariaLabel="Student quick actions" />
-      </section>
     </div>
   );
 }
