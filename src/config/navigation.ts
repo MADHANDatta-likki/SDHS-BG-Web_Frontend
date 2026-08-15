@@ -10,12 +10,14 @@ const dashboardItem: NavigationItemConfig = {
   path: ROUTES.DASHBOARD,
 };
 
+const accountSettingsItem: NavigationItemConfig = {
+  label: "Account Settings",
+  path: ROUTES.ACCOUNT_SETTINGS,
+};
+
 const studentNavigation: NavigationItemConfig[] = [
   { label: "My Learning", path: ROUTES.STUDENT.MY_LEARNING },
-  dashboardItem,
-  { label: "Book Slot", path: ROUTES.STUDENT.SLOTS },
-  { label: "Exam History", path: ROUTES.STUDENT.GRADES },
-  { label: "Attendance", path: ROUTES.STUDENT.ATTENDANCE },
+  accountSettingsItem,
 ];
 
 const teacherNavigation: NavigationItemConfig[] = [

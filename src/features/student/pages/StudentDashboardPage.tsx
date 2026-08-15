@@ -68,11 +68,11 @@ function StudentDashboardPage() {
         <div className="dashboard-heading__identity"><span>{currentUser?.name}</span><span>{currentUser?.volunteerId}</span></div>
       </DashboardPageHeader>
 
-      <CurrentEnrollmentSummary />
       <section className="dashboard-quick-actions" aria-labelledby="student-quick-actions-title">
         <div className="dashboard-section-heading"><h2 id="student-quick-actions-title">Quick Actions</h2><p>Open the tools for your current learning workspace.</p></div>
         <DashboardActions actions={actions} ariaLabel="Student quick actions" />
       </section>
+      <CurrentEnrollmentSummary />
       {loading && <StudentState type="loading" message="Loading your learning workspace..." />}
       {!loading && error && <StudentState type="error" message={error} onRetry={() => void reload()} />}
 
