@@ -9,6 +9,7 @@ import type {
   AttendanceConfigResponse,
   BookingIdRequest,
   BulkBookingResponse,
+  BulkBookingStudent,
   DatedQuery,
   DropVolunteerRequest,
   EditVolunteerRequest,
@@ -190,6 +191,14 @@ class AdminService {
     const response = await axiosInstance.get<BulkBookingResponse>(
       API_ENDPOINTS.ADMIN.BULK_BOOKING,
       { params: query },
+    );
+    return response.data;
+  }
+
+  async searchStudents(query: string): Promise<BulkBookingStudent[]> {
+    const response = await axiosInstance.get<BulkBookingStudent[]>(
+      API_ENDPOINTS.ADMIN.STUDENT_SEARCH,
+      { params: { q: query } },
     );
     return response.data;
   }

@@ -46,6 +46,7 @@ export const API_ENDPOINTS = {
     TEACHER_AVAILABILITY: "/api/v1/admin/teacher-availability",
     TEACHER_AVAILABILITY_SAVE: "/api/v1/admin/teacher-availability/save",
     BULK_BOOKING: "/api/v1/admin/bulk-booking",
+    STUDENT_SEARCH: "/api/v1/admin/students/search",
     BULK_BOOKING_SAVE: "/api/v1/admin/bulk-booking/save",
     BULK_BOOKING_DELETE: "/api/v1/admin/bulk-booking/delete",
     TEACHERS_DASHBOARD: "/api/v1/admin/teachers-dashboard",

@@ -197,6 +197,7 @@ export interface SaveTeacherAvailabilityRequest {
 export interface BulkBookingStudent {
   volunteerId: string;
   name: string;
+  groupId?: string | null;
 }
 
 export interface BulkBookingChapter {

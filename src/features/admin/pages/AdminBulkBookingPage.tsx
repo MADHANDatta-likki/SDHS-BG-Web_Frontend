@@ -7,6 +7,7 @@ import {
 import AdminCard from "../components/AdminCard";
 import AdminPageHeader from "../components/AdminPageHeader";
 import AdminState from "../components/AdminState";
+import AdminStudentAutocomplete from "../components/AdminStudentAutocomplete";
 import { getAdminApiError, useAdminResource } from "../hooks/useAdminResource";
 import adminService from "../services/AdminService";
 import type { BulkBookingEntry } from "../types/api";
@@ -46,7 +47,7 @@ function AdminBulkBookingPage() {
         <>
           <AdminCard title="Add Booking">
             <div className="admin-form-grid">
-              <label className="admin-field">Student<select value={student} onChange={(event) => setStudent(event.target.value)}><option value="">Select student</option>{currentUser && <option value={currentUser.volunteerId}>{currentUser.name} ({currentUser.volunteerId}) — Myself</option>}{data.students.filter((item) => item.volunteerId.toUpperCase() !== currentUser?.volunteerId.toUpperCase()).map((item) => <option key={item.volunteerId} value={item.volunteerId}>{item.name} ({item.volunteerId})</option>)}</select></label>
+              {currentUser && <AdminStudentAutocomplete selectedVolunteerId={student} self={{ volunteerId: currentUser.volunteerId, name: currentUser.name, groupId: currentUser.groupId }} onSelect={(selectedStudent) => setStudent(selectedStudent.volunteerId)} />}
               <label className="admin-field">Slot<select value={slot} onChange={(event) => setSlot(event.target.value)}><option value="">Select slot</option>{data.slots.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
               <label className="admin-field">Chapter<select value={chapter} onChange={(event) => setChapter(event.target.value)}><option value="">Select chapter</option>{data.chapters.map((item) => <option key={item.id} value={item.id}>{formatChapterLabel(item.chapterNumber, item.chapterName, "Ch")}</option>)}</select></label>
               <label className="admin-field">Sloka Count<select value={count} onChange={(event) => setCount(event.target.value)}><option value="">Select count</option>{allowed.map((value) => <option key={value}>{value}</option>)}</select></label>
