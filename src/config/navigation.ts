@@ -25,6 +25,7 @@ const teacherNavigation: NavigationItemConfig[] = [
   { label: "My Availability", path: ROUTES.TEACHER.MY_AVAILABILITY },
   { label: "Exam Grading", path: ROUTES.TEACHER.DASHBOARD },
   { label: "Attendance", path: ROUTES.TEACHER.ATTENDANCE },
+  accountSettingsItem,
 ];
 
 const adminNavigation: NavigationItemConfig[] = [
@@ -40,6 +41,7 @@ const adminNavigation: NavigationItemConfig[] = [
   { label: "Manage Volunteers", path: ROUTES.ADMIN.VOLUNTEERS },
   { label: "Attendance Config", path: ROUTES.ADMIN.ATTENDANCE_CONFIG },
   { label: "Reports", path: ROUTES.ADMIN.REPORTS },
+  accountSettingsItem,
 ];
 
 export function getNavigationItems(role: string): NavigationItemConfig[] {

@@ -2,6 +2,7 @@ export const ROUTES = {
   HOME: "/",
   LOGIN: "/login",
   DASHBOARD: "/dashboard",
+  ACCOUNT_SETTINGS: "/account-settings",
   STUDENT: {
     MY_LEARNING: "/student/my-learning",
     NEW_ENROLLMENT: "/student/enrollments/new",

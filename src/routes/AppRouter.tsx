@@ -31,6 +31,7 @@ const AdminVolunteerAnalyticsPage = lazy(() => import("../features/admin/pages/A
 const AdminAttendanceConfigPage = lazy(() => import("../features/admin/pages/AdminAttendanceConfigPage"));
 const AdminReportsPage = lazy(() => import("../features/admin/pages/AdminReportsPage"));
 const AdminGroupDetailPage = lazy(() => import("../features/admin/pages/AdminGroupDetailPage"));
+const AccountSettingsPage = lazy(() => import("../features/profile/pages/AccountSettingsPage"));
 
 const routeFallback = <div className="app-content__loading" role="status">Loading...</div>;
 
@@ -75,6 +76,7 @@ function AppRouter() {
               </Suspense>
             }
           />
+          <Route path={ROUTES.ACCOUNT_SETTINGS} element={<Suspense fallback={routeFallback}><AccountSettingsPage /></Suspense>} />
           <Route
             path={ROUTES.STUDENT.MY_LEARNING}
             element={

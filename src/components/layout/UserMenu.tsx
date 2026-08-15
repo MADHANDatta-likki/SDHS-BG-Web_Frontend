@@ -1,6 +1,8 @@
 import { useEffect, useId, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 import type { AuthenticatedUser } from "../../features/auth/types/AuthenticatedUser";
+import { ROUTES } from "../../constants/RouteConstants";
 
 interface UserMenuProps {
   user: AuthenticatedUser;
@@ -83,6 +85,7 @@ function UserMenu({ user }: UserMenuProps) {
               <strong>{user.groupId}</strong>
             </div>
           ) : null}
+          <Link className="app-user-menu__settings" to={ROUTES.ACCOUNT_SETTINGS} onClick={() => setOpen(false)}>Account Settings</Link>
         </div>
       ) : null}
     </div>

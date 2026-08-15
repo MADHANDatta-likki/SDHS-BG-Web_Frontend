@@ -207,6 +207,22 @@
   white-space: nowrap;
 }
 
+.app-user-menu__settings {
+  display: inline-flex;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.app-user-menu__settings:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
 .app-sidebar {
   position: fixed;
   z-index: 900;

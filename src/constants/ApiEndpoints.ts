@@ -3,6 +3,10 @@ export const API_ENDPOINTS = {
     LOGIN: "/api/v1/auth/login",
     CHANGE_PASSWORD: "/api/v1/auth/change-password",
   },
+  PROFILE: {
+    GET: "/api/v1/profile",
+    CONTACT: "/api/v1/profile/contact",
+  },
   STUDENT: {
     HOME: "/api/v1/student/home",
     ENROLLMENTS: "/api/v1/student/enrollments",

@@ -7,6 +7,8 @@ import Sidebar from "../components/layout/Sidebar";
 import { getNavigationItems } from "../config/navigation";
 import { useAuth } from "../features/auth/hooks/useAuth";
 import { useOptionalEnrollment } from "../hooks/useEnrollment";
+import CompleteProfileDialog from "../features/profile/components/CompleteProfileDialog";
+import "../features/profile/styles/profile.css";
 import "../theme/layout.css";
 
 function AuthenticatedLayout() {
@@ -75,6 +77,7 @@ function AuthenticatedLayout() {
       <AppContent>
         <Outlet />
       </AppContent>
+      <CompleteProfileDialog />
     </div>
   );
 }
