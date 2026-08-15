@@ -238,7 +238,10 @@ export interface BulkBookingEntry {
   slokaCount2?: number;
 }
 
+export type BulkBookingTrackType = "MEMORIZATION" | "REVISION";
+
 export interface SaveBulkBookingRequest {
+  trackType: BulkBookingTrackType;
   entries: BulkBookingEntry[];
 }
 
