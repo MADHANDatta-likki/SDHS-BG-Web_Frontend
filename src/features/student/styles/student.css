@@ -127,13 +127,6 @@
 .student-booking-confirmation > div strong { font-size: .86rem; }
 .student-booking-confirmation > div span { color: var(--color-text-muted); font-size: .75rem; }
 
-.student-dashboard > .dashboard-heading { order: 0; }
-.student-dashboard > .current-enrollment { order: 1; }
-.student-dashboard > .student-journey__activity { order: 2; }
-.student-dashboard > .student-journey__progress { order: 3; }
-.student-dashboard > .student-journey__result { order: 4; }
-.student-dashboard > .dashboard-quick-actions { order: 5; }
-
 .student-button {
   display: inline-flex; min-height: 40px; width: fit-content; align-items: center; justify-content: center;
   gap: 8px; padding: 8px 15px; border: 1px solid transparent; border-radius: 9px;
