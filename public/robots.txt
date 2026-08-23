@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bg.sdhs.in/sitemap.xml
