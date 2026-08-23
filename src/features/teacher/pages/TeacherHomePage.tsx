@@ -59,6 +59,11 @@ function TeacherHomePage() {
         <div className="dashboard-heading__identity"><span>{currentUser?.name}</span><span>{currentUser?.volunteerId}</span></div>
       </DashboardPageHeader>
 
+      <section className="dashboard-quick-actions" aria-labelledby="teacher-quick-actions-title">
+        <div className="dashboard-section-heading"><div><h2 id="teacher-quick-actions-title">Quick Actions</h2><p>Open your teaching and examination tools.</p></div></div>
+        <DashboardActions actions={actions} ariaLabel="Teacher quick actions" />
+      </section>
+
       {loading && <TeacherState type="loading" message="Loading today's teaching workspace..." />}
       {!loading && error && <TeacherState type="error" message={error} onRetry={() => void reload()} />}
       {!loading && data && (
@@ -78,7 +83,7 @@ function TeacherHomePage() {
             <TeacherCard title="Assigned Exams" label={`${upcomingBookings.length} upcoming`}>
               {upcomingBookings.length === 0
                 ? <TeacherState type="empty" message="No assigned exams are currently waiting for you." />
-                : <ul className="teacher-exam-work-list">{upcomingBookings.map((booking) => <li key={booking.id}><div className="teacher-exam-work-list__identity"><strong>{booking.studentName}</strong><span>{booking.studentVolunteerId}</span></div><div><strong>{booking.chapterName ?? `Chapter ${booking.chapterNumber ?? ""}`}</strong><span>{booking.slotName ?? "Time not listed"}</span></div><time dateTime={booking.date ?? undefined}>{booking.formattedDate ?? booking.date ?? ""}</time><span className="teacher-badge">Assigned</span></li>)}</ul>}
+                : <ul className="teacher-exam-work-list">{upcomingBookings.map((booking) => <li key={booking.id}><div className="teacher-exam-work-list__identity"><strong>{booking.studentName}</strong><span>{booking.studentVolunteerId}</span>{booking.studentPhone && <span><a href={`tel:${booking.studentPhone}`} style={{ color: "inherit" }}>{booking.studentPhone}</a></span>}</div><div><strong>{booking.chapterName ?? `Chapter ${booking.chapterNumber ?? ""}`}</strong><span>{booking.slotName ?? "Time not listed"}</span></div><time dateTime={booking.date ?? undefined}>{booking.formattedDate ?? booking.date ?? ""}</time><span className="teacher-badge">Assigned</span></li>)}</ul>}
             </TeacherCard>
           </section>
 
@@ -109,10 +114,6 @@ function TeacherHomePage() {
         </div>
       )}
 
-      <section className="dashboard-quick-actions" aria-labelledby="teacher-quick-actions-title">
-        <div className="dashboard-section-heading"><div><h2 id="teacher-quick-actions-title">Quick Actions</h2><p>Open your teaching and examination tools.</p></div></div>
-        <DashboardActions actions={actions} ariaLabel="Teacher quick actions" />
-      </section>
     </div>
   );
 }
