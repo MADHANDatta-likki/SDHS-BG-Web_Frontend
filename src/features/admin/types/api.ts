@@ -265,6 +265,7 @@ export interface TeachersDashboardBooking {
   id: number;
   volunteerId: string;
   studentName: string;
+  studentPhone: string | null;
   slotName?: string;
   chapterId?: number;
   chapterNumber?: number;
