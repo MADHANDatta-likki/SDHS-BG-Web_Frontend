@@ -45,6 +45,15 @@ function GradeEditor({
         <th scope="row" data-label="Student">
           <strong>{booking.studentName}</strong>
           <span>{booking.studentVolunteerId}</span>
+          <span>
+            {booking.studentPhone ? (
+              <a href={`tel:${booking.studentPhone}`}>
+                {booking.studentPhone}
+              </a>
+            ) : (
+              "-"
+            )}
+          </span>
         </th>
         <td data-label="Chapter">
           {isSupplementalChapter(booking.chapterName) ? (

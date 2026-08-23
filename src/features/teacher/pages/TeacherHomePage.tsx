@@ -1,5 +1,4 @@
 import { useCallback, useMemo } from "react";
-import { Link } from "react-router-dom";
 
 import DashboardActions, { type DashboardAction } from "../../../components/common/DashboardActions";
 import DashboardPageHeader from "../../../components/common/DashboardPageHeader";
@@ -79,7 +78,7 @@ function TeacherHomePage() {
             <TeacherCard title="Assigned Exams" label={`${upcomingBookings.length} upcoming`}>
               {upcomingBookings.length === 0
                 ? <TeacherState type="empty" message="No assigned exams are currently waiting for you." />
-                : <ul className="teacher-exam-work-list">{upcomingBookings.map((booking) => <li key={booking.id}><div className="teacher-exam-work-list__identity"><strong>{booking.studentName}</strong><span>{booking.studentVolunteerId}</span></div><div><strong>{booking.chapterName ?? `Chapter ${booking.chapterNumber ?? ""}`}</strong><span>{booking.slotName ?? "Time not listed"}</span></div><time dateTime={booking.date ?? undefined}>{booking.formattedDate ?? booking.date ?? ""}</time><span className="teacher-badge">Assigned</span><Link className="teacher-button teacher-button--secondary teacher-exam-work-list__action" to={ROUTES.TEACHER.DASHBOARD}>Open</Link></li>)}</ul>}
+                : <ul className="teacher-exam-work-list">{upcomingBookings.map((booking) => <li key={booking.id}><div className="teacher-exam-work-list__identity"><strong>{booking.studentName}</strong><span>{booking.studentVolunteerId}</span></div><div><strong>{booking.chapterName ?? `Chapter ${booking.chapterNumber ?? ""}`}</strong><span>{booking.slotName ?? "Time not listed"}</span></div><time dateTime={booking.date ?? undefined}>{booking.formattedDate ?? booking.date ?? ""}</time><span className="teacher-badge">Assigned</span></li>)}</ul>}
             </TeacherCard>
           </section>
 
