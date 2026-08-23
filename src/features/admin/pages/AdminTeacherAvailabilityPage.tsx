@@ -121,7 +121,7 @@ function AdminTeacherAvailabilityPage() {
                   return (
                     <article className="admin-availability-row" key={teacher.volunteerId}>
                       <div className="admin-availability-row__header">
-                        <div><strong>{teacher.name}</strong><span>{teacher.volunteerId}</span></div>
+                        <div><strong>{teacher.name}</strong><span>{teacher.volunteerId}</span>{teacher.phoneNumber && <span><a href={`tel:${teacher.phoneNumber}`} style={{ color: "inherit" }}>{teacher.phoneNumber}</a></span>}</div>
                         <span className={`admin-availability-status admin-availability-status--${teacher.status.toLowerCase()}`}>{teacher.status === "SUBMITTED" ? "Submitted" : "Pending"}</span>
                       </div>
                       <div className="admin-availability-row__windows">

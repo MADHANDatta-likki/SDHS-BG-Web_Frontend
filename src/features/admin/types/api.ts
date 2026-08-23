@@ -166,6 +166,7 @@ export interface SlotOption {
 export interface TeacherAvailability {
   volunteerId: string;
   name: string;
+  phoneNumber: string | null;
   status: "SUBMITTED" | "PENDING";
   selectedSlotIds: number[];
 }
