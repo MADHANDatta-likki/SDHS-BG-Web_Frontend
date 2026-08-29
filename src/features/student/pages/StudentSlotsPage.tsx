@@ -14,6 +14,7 @@ import "../styles/student.css";
 
 function StudentSlotsPage() {
   const { selectedEnrollment } = useEnrollment();
+  const revision = (selectedEnrollment?.programType ?? selectedEnrollment?.batchType) === "REVISION";
   const enrollmentId = (selectedEnrollment?.enrollmentId ?? selectedEnrollment?.id)!;
   const load = useCallback(
     () => studentService.getSlots(enrollmentId),
@@ -97,6 +98,7 @@ function StudentSlotsPage() {
                   slots={data.slots}
                   submitting={submitting}
                   onSubmit={book}
+                  revision={revision}
                 />
               )}
             </StudentCard>
@@ -114,7 +116,7 @@ function StudentSlotsPage() {
                     <div>
                       <strong>{booking.slotName ?? "Slot"}</strong>
                       <span>{formatChapterLabel(booking.chapterNumber, booking.chapterName, "Ch")}</span>
-                      <span>{booking.slokaCount} sloka{booking.slokaCount === 1 ? "" : "s"} · {booking.date}</span>
+                      <span>{revision ? "Whole Chapter" : `${booking.slokaCount} sloka${booking.slokaCount === 1 ? "" : "s"}`} · {booking.date}</span>
                     </div>
                     {!booking.cancelled && (
                       <button

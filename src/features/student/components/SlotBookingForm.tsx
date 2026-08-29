@@ -16,6 +16,7 @@ interface SlotBookingFormProps {
   slots: StudentSlot[];
   submitting: boolean;
   onSubmit: (request: BookStudentSlotRequest) => Promise<void>;
+  revision: boolean;
 }
 
 interface ChapterFieldsProps {
@@ -25,6 +26,7 @@ interface ChapterFieldsProps {
   idSuffix: string;
   onChapterChange: (value: string) => void;
   onCountChange: (value: string) => void;
+  revision: boolean;
 }
 
 function ChapterFields({
@@ -34,6 +36,7 @@ function ChapterFields({
   idSuffix,
   onChapterChange,
   onCountChange,
+  revision,
 }: ChapterFieldsProps) {
   const chapter = chapters.find((item) => item.id === Number(chapterId));
   const slokaOptions = generateSlokaOptions(chapter?.totalSlokas ?? 0);
@@ -45,7 +48,9 @@ function ChapterFields({
 
   return (
     <div className="student-form__chapter">
-      <div className="student-field">
+      {revision ? (
+        chapter && <div className="student-field"><span>Sloka Range</span><strong>Whole Chapter</strong></div>
+      ) : <div className="student-field">
         <label htmlFor={`chapter${idSuffix}`}>Select {idSuffix ? "Second " : ""}Chapter</label>
         <select
           id={`chapter${idSuffix}`}
@@ -60,7 +65,7 @@ function ChapterFields({
             </option>
           ))}
         </select>
-      </div>
+      </div>}
       <div className="student-field">
         <label htmlFor={`slokaCount${idSuffix}`}>
           Number of Slokas{idSuffix ? " (Chapter 2)" : ""}
@@ -91,7 +96,7 @@ function ChapterFields({
   );
 }
 
-function SlotBookingForm({ chapters, slots, submitting, onSubmit }: SlotBookingFormProps) {
+function SlotBookingForm({ chapters, slots, submitting, onSubmit, revision }: SlotBookingFormProps) {
   const [slotId, setSlotId] = useState("");
   const [chapterId, setChapterId] = useState("");
   const [slokaCount, setSlokaCount] = useState("");
@@ -131,18 +136,18 @@ function SlotBookingForm({ chapters, slots, submitting, onSubmit }: SlotBookingF
     setValidationError("");
     if (!slotId) return setValidationError("Please select a time slot.");
     if (!chapterId) return setValidationError("Please select a chapter.");
-    const firstError = validateCount(chapterId, slokaCount);
+    const firstError = revision ? null : validateCount(chapterId, slokaCount);
     if (firstError) return setValidationError(firstError);
     if (secondChapter && !chapterId2) return setValidationError("Please select a second chapter or uncheck the option.");
-    const secondError = secondChapter ? validateCount(chapterId2, slokaCount2) : null;
+    const secondError = secondChapter && !revision ? validateCount(chapterId2, slokaCount2) : null;
     if (secondError) return setValidationError(secondError);
 
     const request: BookStudentSlotRequest = {
       slotId: Number(slotId),
       chapterId: Number(chapterId),
-      slokaCount: Number(slokaCount),
+      ...(!revision ? { slokaCount: Number(slokaCount) } : {}),
       ...(secondChapter
-        ? { chapterId2: Number(chapterId2), slokaCount2: Number(slokaCount2) }
+        ? { chapterId2: Number(chapterId2), ...(!revision ? { slokaCount2: Number(slokaCount2) } : {}) }
         : {}),
     };
     await onSubmit(request);
@@ -160,6 +165,7 @@ function SlotBookingForm({ chapters, slots, submitting, onSubmit }: SlotBookingF
           idSuffix=""
           onChapterChange={setChapterId}
           onCountChange={setSlokaCount}
+          revision={revision}
         />
         <label className="student-checkbox">
           <input
@@ -183,6 +189,7 @@ function SlotBookingForm({ chapters, slots, submitting, onSubmit }: SlotBookingF
             idSuffix="2"
             onChapterChange={setChapterId2}
             onCountChange={setSlokaCount2}
+            revision={revision}
           />
         )}
       </section>
