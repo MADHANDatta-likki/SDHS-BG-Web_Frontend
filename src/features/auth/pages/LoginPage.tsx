@@ -1,4 +1,6 @@
 import logo from "../../../assets/images/logo.png";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../../constants/RouteConstants";
 import LoginForm from "../components/LoginForm";
 import "../styles/login.css";
 
@@ -48,7 +50,7 @@ function LoginPage() {
 
           <footer className="login-page__footer">
             © 2025 <span>Sri Datta Human Services</span> · SDHS Bhagavad Gita
-            Program
+            Program · <Link to={ROUTES.PRIVACY_POLICY}>Privacy Policy</Link>
           </footer>
         </div>
       </main>

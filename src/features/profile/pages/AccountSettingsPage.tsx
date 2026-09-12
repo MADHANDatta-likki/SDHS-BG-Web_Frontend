@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import DashboardPageHeader from "../../../components/common/DashboardPageHeader";
+import { ROUTES } from "../../../constants/RouteConstants";
 import { useAuth } from "../../auth/hooks/useAuth";
 import ContactInfoCard from "../components/ContactInfoCard";
 import EditContactDialog from "../components/EditContactDialog";
@@ -50,7 +52,8 @@ function AccountSettingsPage() {
           <header><div><h2 id="notification-settings-title">Notifications</h2><p>Notification preferences will appear here.</p></div></header>
         </section>
         <section className="profile-card" aria-labelledby="privacy-settings-title">
-          <header><div><h2 id="privacy-settings-title">Privacy</h2><p>Privacy preferences will appear here.</p></div></header>
+          <header><div><h2 id="privacy-settings-title">Privacy</h2><p>Review how information is handled by the learning platform.</p></div></header>
+          <div className="profile-card__body"><Link className="profile-button profile-button--secondary" to={ROUTES.PRIVACY_POLICY}>View Privacy Policy</Link></div>
         </section>
       </div>
 

@@ -383,6 +383,12 @@
   font-weight: 600;
 }
 
+.login-page__footer a {
+  color: var(--login-primary);
+  font-weight: 600;
+  text-underline-offset: 2px;
+}
+
 .login-form__sr-only {
   position: absolute;
   width: 1px;

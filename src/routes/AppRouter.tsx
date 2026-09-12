@@ -32,6 +32,7 @@ const AdminAttendanceConfigPage = lazy(() => import("../features/admin/pages/Adm
 const AdminReportsPage = lazy(() => import("../features/admin/pages/AdminReportsPage"));
 const AdminGroupDetailPage = lazy(() => import("../features/admin/pages/AdminGroupDetailPage"));
 const AccountSettingsPage = lazy(() => import("../features/profile/pages/AccountSettingsPage"));
+const PrivacyPolicyPage = lazy(() => import("../pages/common/PrivacyPolicyPage"));
 
 const routeFallback = <div className="app-content__loading" role="status">Loading...</div>;
 
@@ -52,6 +53,16 @@ function AppRouter() {
           element={
             <PublicLayout>
               <LoginPage />
+            </PublicLayout>
+          }
+        />
+        <Route
+          path={ROUTES.PRIVACY_POLICY}
+          element={
+            <PublicLayout>
+              <Suspense fallback={routeFallback}>
+                <PrivacyPolicyPage />
+              </Suspense>
             </PublicLayout>
           }
         />
