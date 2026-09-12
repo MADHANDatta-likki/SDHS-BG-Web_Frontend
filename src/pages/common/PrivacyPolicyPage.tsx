@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import logo from "../../assets/images/logo.png";
 import { ROUTES } from "../../constants/RouteConstants";
+import { effectiveDate, lastUpdated, version } from "../../constants/legal";
 import "./privacy-policy.css";
 
 const sections = [
@@ -34,12 +35,12 @@ function PrivacyPolicyPage() {
         <section className="privacy-hero" aria-labelledby="privacy-title">
           <p className="privacy-eyebrow">Legal &amp; Privacy</p>
           <h1 id="privacy-title">Privacy Policy</h1>
-          <p>This policy explains how the SDHS Bhagavad Gita Learning Platform handles information used to deliver and administer its educational programs.</p>
           <dl className="privacy-meta">
-            <div><dt>Effective Date</dt><dd>September 12, 2026</dd></div>
-            <div><dt>Last Updated</dt><dd>September 12, 2026</dd></div>
-            <div><dt>Version</dt><dd>1.0</dd></div>
+            <div><dt>Effective Date</dt><dd>{effectiveDate}</dd></div>
+            <div><dt>Last Updated</dt><dd>{lastUpdated}</dd></div>
+            <div><dt>Version</dt><dd>{version}</dd></div>
           </dl>
+          <p>This policy explains how the SDHS Bhagavad Gita Learning Platform handles information used to deliver and administer its educational programs.</p>
         </section>
 
         <div className="privacy-layout">
@@ -124,7 +125,7 @@ function PrivacyPolicyPage() {
 
             <section id="contact">
               <h2>12. Contact</h2>
-              <p>For privacy questions or requests, contact SDHS at <a href="mailto:privacy@sdhs.org">privacy@sdhs.org</a>.</p>
+              <p>For privacy questions or requests, contact SDHS at <a href="mailto:sridattahumaneservices@gmail.com">sridattahumaneservices@gmail.com</a>.</p>
               <p className="privacy-contact-note">This privacy contact address should be replaced with the official SDHS privacy contact if a dedicated address is established.</p>
             </section>
           </article>

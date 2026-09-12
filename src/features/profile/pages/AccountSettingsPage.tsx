@@ -55,6 +55,10 @@ function AccountSettingsPage() {
           <header><div><h2 id="privacy-settings-title">Privacy</h2><p>Review how information is handled by the learning platform.</p></div></header>
           <div className="profile-card__body"><Link className="profile-button profile-button--secondary" to={ROUTES.PRIVACY_POLICY}>View Privacy Policy</Link></div>
         </section>
+        <section className="profile-card" aria-labelledby="delete-account-title">
+          <header><div><h2 id="delete-account-title">Delete Account</h2><p>Learn how to permanently remove your SDHS account.</p></div></header>
+          <div className="profile-card__body"><Link className="profile-button profile-button--secondary" to={ROUTES.DELETE_ACCOUNT}>View Account Deletion Policy</Link></div>
+        </section>
       </div>
 
       {editingContact && <EditContactDialog profile={profile} onSave={saveContact} onClose={() => setEditingContact(false)} />}

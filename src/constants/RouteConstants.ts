@@ -2,6 +2,7 @@ export const ROUTES = {
   HOME: "/",
   LOGIN: "/login",
   PRIVACY_POLICY: "/privacy-policy",
+  DELETE_ACCOUNT: "/delete-account",
   DASHBOARD: "/dashboard",
   ACCOUNT_SETTINGS: "/account-settings",
   STUDENT: {

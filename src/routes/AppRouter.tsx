@@ -33,6 +33,7 @@ const AdminReportsPage = lazy(() => import("../features/admin/pages/AdminReports
 const AdminGroupDetailPage = lazy(() => import("../features/admin/pages/AdminGroupDetailPage"));
 const AccountSettingsPage = lazy(() => import("../features/profile/pages/AccountSettingsPage"));
 const PrivacyPolicyPage = lazy(() => import("../pages/common/PrivacyPolicyPage"));
+const DeleteAccountPage = lazy(() => import("../pages/common/DeleteAccountPage"));
 
 const routeFallback = <div className="app-content__loading" role="status">Loading...</div>;
 
@@ -62,6 +63,16 @@ function AppRouter() {
             <PublicLayout>
               <Suspense fallback={routeFallback}>
                 <PrivacyPolicyPage />
+              </Suspense>
+            </PublicLayout>
+          }
+        />
+        <Route
+          path={ROUTES.DELETE_ACCOUNT}
+          element={
+            <PublicLayout>
+              <Suspense fallback={routeFallback}>
+                <DeleteAccountPage />
               </Suspense>
             </PublicLayout>
           }

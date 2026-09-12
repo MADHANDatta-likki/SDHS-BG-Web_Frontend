@@ -50,7 +50,8 @@ function LoginPage() {
 
           <footer className="login-page__footer">
             © 2025 <span>Sri Datta Human Services</span> · SDHS Bhagavad Gita
-            Program · <Link to={ROUTES.PRIVACY_POLICY}>Privacy Policy</Link>
+            Program · <Link to={ROUTES.PRIVACY_POLICY}>Privacy Policy</Link> ·{" "}
+            <Link to={ROUTES.DELETE_ACCOUNT}>Delete Account</Link>
           </footer>
         </div>
       </main>
