@@ -35,7 +35,7 @@ function AdminBulkBookingPage() {
   const remove = async (bookingId: number) => { if (!window.confirm("Delete this booking?")) return; setWorking(true); try { const response = await adminService.deleteBulkBooking({ bookingId }); setNotice({ type: "success", text: response.message }); await reload(); } catch (e: unknown) { setNotice({ type: "error", text: getAdminApiError(e, "Failed to delete booking.") }); } finally { setWorking(false); } };
   return (
     <div className="admin-page">
-      <AdminPageHeader title="Student Slot Booking" />
+      <AdminPageHeader title="Bulk Slot Booking" />
       {notice && <div className={`admin-alert admin-alert--${notice.type}`} role={notice.type === "error" ? "alert" : "status"}>{notice.text}</div>}
       <AdminCard title="Date">
         <label className="admin-field">Booking date<input type="date" value={date} onChange={(event) => { setDate(event.target.value); setEntries([]); }} /></label>

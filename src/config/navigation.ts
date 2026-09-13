@@ -30,16 +30,16 @@ const teacherNavigation: NavigationItemConfig[] = [
 
 const adminNavigation: NavigationItemConfig[] = [
   dashboardItem,
-  { label: "Syllabus", path: ROUTES.ADMIN.SYLLABUS },
+  { label: "Syllabus Management", path: ROUTES.ADMIN.SYLLABUS },
   {
     label: "Teacher Availability",
     path: ROUTES.ADMIN.TEACHER_AVAILABILITY,
   },
-  { label: "Student Slot Booking", path: ROUTES.ADMIN.BULK_BOOKING },
-  { label: "Teachers Dashboard", path: ROUTES.ADMIN.TEACHERS_DASHBOARD },
-  { label: "New Enrollments", path: ROUTES.ADMIN.ENROLLMENTS },
+  { label: "Bulk Slot Booking", path: ROUTES.ADMIN.BULK_BOOKING },
+  { label: "Teacher Dashboard", path: ROUTES.ADMIN.TEACHERS_DASHBOARD },
+  { label: "Enrollment Management", path: ROUTES.ADMIN.ENROLLMENTS },
   { label: "Manage Volunteers", path: ROUTES.ADMIN.VOLUNTEERS },
-  { label: "Attendance Config", path: ROUTES.ADMIN.ATTENDANCE_CONFIG },
+  { label: "Attendance Configuration", path: ROUTES.ADMIN.ATTENDANCE_CONFIG },
   { label: "Reports", path: ROUTES.ADMIN.REPORTS },
   accountSettingsItem,
 ];

@@ -126,14 +126,13 @@ function PrivacyPolicyPage() {
             <section id="contact">
               <h2>12. Contact</h2>
               <p>For privacy questions or requests, contact SDHS at <a href="mailto:sridattahumaneservices@gmail.com">sridattahumaneservices@gmail.com</a>.</p>
-              <p className="privacy-contact-note">This privacy contact address should be replaced with the official SDHS privacy contact if a dedicated address is established.</p>
             </section>
           </article>
         </div>
       </main>
 
       <footer className="privacy-footer">
-        <span>© SDHS Learning Portal</span>
+        <span>© 2026 Sri Datta Humane Services</span>
         <Link to={ROUTES.PRIVACY_POLICY}>Privacy Policy</Link>
       </footer>
     </div>

@@ -71,7 +71,7 @@ function AdminSyllabusPage() {
   return (
     <div className="admin-page">
       <AdminPageHeader
-        title="Syllabus Config"
+        title="Syllabus Management"
         description="Configure chapters and allowed slokas for a date."
       />
       <AdminCard title="Date">

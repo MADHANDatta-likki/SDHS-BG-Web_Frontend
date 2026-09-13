@@ -25,7 +25,7 @@ function RoleState({
       {type === "loading" && <span className={spinnerClassName} aria-hidden="true" />}
       <p>{message}</p>
       {type === "error" && onRetry && (
-        <button className={buttonClassName} type="button" onClick={onRetry}>Try Again</button>
+        <button className={buttonClassName} type="button" onClick={onRetry}>Retry</button>
       )}
     </div>
   );

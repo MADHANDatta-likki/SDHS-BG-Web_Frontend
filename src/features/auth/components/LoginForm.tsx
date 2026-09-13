@@ -78,7 +78,7 @@ function LoginForm() {
       ) : null}
 
       <div className="login-form__field">
-        <label className="login-form__sr-only" htmlFor="volunteerId">
+        <label className="login-form__label" htmlFor="volunteerId">
           Volunteer ID
         </label>
         <span className="login-form__input-icon" aria-hidden="true">
@@ -110,7 +110,7 @@ function LoginForm() {
       </div>
 
       <div className="login-form__field">
-        <label className="login-form__sr-only" htmlFor="password">
+        <label className="login-form__label" htmlFor="password">
           Password
         </label>
         <span className="login-form__input-icon" aria-hidden="true">

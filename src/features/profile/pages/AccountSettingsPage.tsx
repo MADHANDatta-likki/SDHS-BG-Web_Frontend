@@ -42,15 +42,7 @@ function AccountSettingsPage() {
 
       <ContactInfoCard profile={profile} onEdit={() => { setSuccessMessage(""); setEditingContact(true); }} />
 
-      <section className="profile-card" aria-labelledby="password-settings-title">
-        <header><div><h2 id="password-settings-title">Password</h2><p>Password changes continue through the existing secure password workflow.</p></div></header>
-        <div className="profile-card__body"><span className="profile-placeholder">Password settings will be available from this account workspace.</span></div>
-      </section>
-
       <div className="profile-future-grid">
-        <section className="profile-card" aria-labelledby="notification-settings-title">
-          <header><div><h2 id="notification-settings-title">Notifications</h2><p>Notification preferences will appear here.</p></div></header>
-        </section>
         <section className="profile-card" aria-labelledby="privacy-settings-title">
           <header><div><h2 id="privacy-settings-title">Privacy</h2><p>Review how information is handled by the learning platform.</p></div></header>
           <div className="profile-card__body"><Link className="profile-button profile-button--secondary" to={ROUTES.PRIVACY_POLICY}>View Privacy Policy</Link></div>

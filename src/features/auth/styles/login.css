@@ -159,6 +159,14 @@
   margin-bottom: 16px;
 }
 
+.login-form__label {
+  display: block;
+  margin: 0 0 6px 2px;
+  color: var(--login-body);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
 .login-form__input {
   width: 100%;
   min-height: 48px;
@@ -199,7 +207,7 @@
 .login-form__input-icon {
   position: absolute;
   z-index: 1;
-  top: 25px;
+  top: 49px;
   left: 16px;
   min-width: 18px;
   color: var(--color-text-muted);
@@ -212,7 +220,7 @@
 
 .login-form__password-toggle {
   position: absolute;
-  top: 25px;
+  top: 49px;
   right: 14px;
   border: 0;
   background: transparent;

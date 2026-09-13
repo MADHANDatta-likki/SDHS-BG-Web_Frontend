@@ -74,7 +74,6 @@ function DeleteAccountPage() {
           <section>
             <h2>2. How to Request Deletion</h2>
             <p>Email the SDHS administrator at <a href="mailto:sridattahumaneservices@gmail.com">sridattahumaneservices@gmail.com</a>, or contact SDHS through its official support contact. Include your Volunteer ID so the correct account can be identified. SDHS may verify your identity before processing the request.</p>
-            <p className="privacy-contact-note"><strong>Administrative note:</strong> sridattahumaneservices@gmail.com is the current placeholder privacy contact and should be replaced when the official SDHS contact is confirmed.</p>
           </section>
           <section>
             <h2>3. What Data Will Be Deleted</h2>
@@ -113,7 +112,7 @@ function DeleteAccountPage() {
       </main>
 
       <footer className="privacy-footer">
-        <span>© SDHS Learning Portal</span>
+        <span>© 2026 Sri Datta Humane Services</span>
         <Link to={ROUTES.PRIVACY_POLICY}>Privacy Policy</Link>
         <Link to={ROUTES.DELETE_ACCOUNT}>Delete Account</Link>
       </footer>

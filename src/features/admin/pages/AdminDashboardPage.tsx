@@ -21,10 +21,10 @@ const primaryActions: readonly DashboardAction[] = [
 ];
 
 const secondaryActions: readonly DashboardAction[] = [
-  { to: ROUTES.ADMIN.SYLLABUS, icon: "📖", title: "Syllabus", description: "Configure weekly exam syllabus" },
-  { to: ROUTES.ADMIN.BULK_BOOKING, icon: "🎓", title: "Student Booking", description: "Manage student exam bookings" },
+  { to: ROUTES.ADMIN.SYLLABUS, icon: "📖", title: "Syllabus Management", description: "Configure weekly exam syllabus" },
+  { to: ROUTES.ADMIN.BULK_BOOKING, icon: "🎓", title: "Bulk Slot Booking", description: "Manage student exam bookings" },
   { to: ROUTES.ADMIN.TEACHERS_DASHBOARD, icon: "✏️", title: "Teacher Grading", description: "Review assignments and grades" },
-  { to: ROUTES.ADMIN.ATTENDANCE_CONFIG, icon: "📋", title: "Attendance Config", description: "Configure learning group dates" },
+  { to: ROUTES.ADMIN.ATTENDANCE_CONFIG, icon: "📋", title: "Attendance Configuration", description: "Configure learning group dates" },
 ];
 
 function AdminDashboardPage() {

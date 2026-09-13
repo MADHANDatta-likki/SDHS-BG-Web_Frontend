@@ -43,7 +43,7 @@ function AdminAttendanceConfigPage() {
 
   return (
     <div className="admin-page">
-      <AdminPageHeader title="Attendance Config" />
+      <AdminPageHeader title="Attendance Configuration" />
       {notice && <div className={`admin-alert admin-alert--${notice.type}`} role={notice.type === "error" ? "alert" : "status"}>{notice.text}</div>}
       {loading && <AdminState type="loading" message="Loading groups..." />}
       {!loading && error && <AdminState type="error" message={error} onRetry={() => void reload()} />}

@@ -43,13 +43,13 @@ function LoginPage() {
               </h2>
               <p className="login-page__contact-text">
                 Reach out to learn more about volunteering opportunities with
-                Sri Datta Human Services.
+                Sri Datta Humane Services.
               </p>
             </div>
           </aside>
 
           <footer className="login-page__footer">
-            © 2025 <span>Sri Datta Human Services</span> · SDHS Learning Portal ·{" "}
+            © 2026 <span>Sri Datta Humane Services</span> · SDHS Learning Portal ·{" "}
             <Link to={ROUTES.PRIVACY_POLICY}>Privacy Policy</Link> ·{" "}
             <Link to={ROUTES.DELETE_ACCOUNT}>Delete Account</Link>
           </footer>
