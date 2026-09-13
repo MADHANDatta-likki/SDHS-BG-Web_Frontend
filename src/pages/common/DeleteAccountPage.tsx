@@ -6,8 +6,8 @@ import { ROUTES } from "../../constants/RouteConstants";
 import { effectiveDate, lastUpdated, version } from "../../constants/legal";
 import "./privacy-policy.css";
 
-const pageTitle = "Delete Your SDHS Bhagavad Gita Learning Account";
-const pageDescription = "Learn how to request deletion of your SDHS Bhagavad Gita Learning account and associated personal information.";
+const pageTitle = "Delete Your SDHS Learning Portal Account";
+const pageDescription = "Learn how to request deletion of your SDHS Learning Portal account and associated personal information.";
 
 function setMeta(name: string, content: string, property = false) {
   const attribute = property ? "property" : "name";
@@ -49,7 +49,7 @@ function DeleteAccountPage() {
       <header className="privacy-header">
         <Link className="privacy-brand" to={ROUTES.HOME} aria-label="SDHS Learning Portal home">
           <img src={logo} alt="" />
-          <span>SDHS Bhagavad Gita Learning Platform</span>
+          <span>SDHS Learning Portal</span>
         </Link>
         <Link className="privacy-header__link" to={ROUTES.LOGIN}>Sign In</Link>
       </header>
@@ -69,7 +69,7 @@ function DeleteAccountPage() {
         <article className="privacy-policy">
           <section>
             <h2>1. Overview</h2>
-            <p>You may request permanent deletion of your SDHS Bhagavad Gita Learning account and associated personal information at any time.</p>
+            <p>You may request permanent deletion of your SDHS Learning Portal account and associated personal information at any time.</p>
           </section>
           <section>
             <h2>2. How to Request Deletion</h2>
@@ -113,7 +113,7 @@ function DeleteAccountPage() {
       </main>
 
       <footer className="privacy-footer">
-        <span>© SDHS Bhagavad Gita Learning Platform</span>
+        <span>© SDHS Learning Portal</span>
         <Link to={ROUTES.PRIVACY_POLICY}>Privacy Policy</Link>
         <Link to={ROUTES.DELETE_ACCOUNT}>Delete Account</Link>
       </footer>

@@ -26,7 +26,7 @@ function PrivacyPolicyPage() {
       <header className="privacy-header">
         <Link className="privacy-brand" to={ROUTES.HOME} aria-label="SDHS Learning Portal home">
           <img src={logo} alt="" />
-          <span>SDHS Bhagavad Gita Learning Platform</span>
+          <span>SDHS Learning Portal</span>
         </Link>
         <Link className="privacy-header__link" to={ROUTES.LOGIN}>Sign In</Link>
       </header>
@@ -40,7 +40,7 @@ function PrivacyPolicyPage() {
             <div><dt>Last Updated</dt><dd>{lastUpdated}</dd></div>
             <div><dt>Version</dt><dd>{version}</dd></div>
           </dl>
-          <p>This policy explains how the SDHS Bhagavad Gita Learning Platform handles information used to deliver and administer its educational programs.</p>
+          <p>This policy explains how the SDHS Learning Portal handles information used to deliver and administer its educational programs.</p>
         </section>
 
         <div className="privacy-layout">
@@ -52,7 +52,7 @@ function PrivacyPolicyPage() {
           <article className="privacy-policy">
             <section id="introduction">
               <h2>1. Introduction</h2>
-              <p>Sanatana Dharma Hindu Society (“SDHS,” “we,” “us,” or “our”) operates the SDHS Bhagavad Gita Learning Platform. The platform supports volunteers participating in Fluent Reading, Memorization, and Revision programs and provides role-specific tools for students, teachers, and administrators.</p>
+              <p>Sanatana Dharma Hindu Society (“SDHS,” “we,” “us,” or “our”) operates the SDHS Learning Portal. The platform supports volunteers participating in Fluent Reading, Memorization, and Revision programs and provides role-specific tools for students, teachers, and administrators.</p>
               <p>By using the platform, you acknowledge the information practices described in this policy.</p>
             </section>
 
@@ -133,7 +133,7 @@ function PrivacyPolicyPage() {
       </main>
 
       <footer className="privacy-footer">
-        <span>© SDHS Bhagavad Gita Learning Platform</span>
+        <span>© SDHS Learning Portal</span>
         <Link to={ROUTES.PRIVACY_POLICY}>Privacy Policy</Link>
       </footer>
     </div>

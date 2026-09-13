@@ -9,7 +9,7 @@ function LoginPage() {
     <div className="login-page">
       <header className="login-page__header">
         <div className="login-page__brand">
-          SDHS Bhagavad Gita Memorization
+          SDHS Learning Portal
         </div>
       </header>
 
@@ -49,8 +49,8 @@ function LoginPage() {
           </aside>
 
           <footer className="login-page__footer">
-            © 2025 <span>Sri Datta Human Services</span> · SDHS Bhagavad Gita
-            Program · <Link to={ROUTES.PRIVACY_POLICY}>Privacy Policy</Link> ·{" "}
+            © 2025 <span>Sri Datta Human Services</span> · SDHS Learning Portal ·{" "}
+            <Link to={ROUTES.PRIVACY_POLICY}>Privacy Policy</Link> ·{" "}
             <Link to={ROUTES.DELETE_ACCOUNT}>Delete Account</Link>
           </footer>
         </div>
